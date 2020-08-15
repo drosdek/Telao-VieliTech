@@ -1,6 +1,6 @@
 const sql = require("./db");
 
-const Equipamento = (equipamento) => {
+const Equipamento = function (equipamento) {
 	this.equipamento = equipamento.equipamento;
 	this.horaatual = equipamento.horaatual;
 	this.producao = equipamento.producao;
@@ -37,7 +37,7 @@ Equipamento.findByID = (equipamentoId, result) => {
 }
 
 
-Equipamento.getAll = result => {
+Equipamento.getAll = (result) => {
 	sql.query("SELECT * FROM oee_telao", (err, res) => {
 	  if (err) {
 		 console.log("error: ", err);
@@ -49,4 +49,5 @@ Equipamento.getAll = result => {
 	  result(null, res);
 	});
  };
- 
+
+ module.exports = Equipamento;
