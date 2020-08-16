@@ -25,10 +25,10 @@ module.exports = (app) => {
 				"pctmeta": 34.891172632,
 				"ritmodia": 1.982981644,
 				"ritmometa": 9.0375,
-				"ritmomin": null,
+				"ritmomin": 12.12,
 				"inicioparada": "2020-08-14T18:24:46.000Z",
 				"TempoParado": "242:07:08",
-				"oee": 37.984229565
+				"metaoee": 37.984229565
 			},
 			{
 				"id_equipamento": 2,
@@ -45,10 +45,10 @@ module.exports = (app) => {
 				"pctmeta": 34.891172632,
 				"ritmodia": 1.982981644,
 				"ritmometa": 9.0375,
-				"ritmomin": null,
-				"inicioparada": "2020-08-14T18:24:46.000Z",
+				"ritmomin": 13.12,
+				"inicioparada": null,
 				"TempoParado": "242:07:08",
-				"oee": 37.984229565
+				"metaoee": 37.984229565
 			}
 		]));
 	});
