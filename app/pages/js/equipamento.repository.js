@@ -12,7 +12,7 @@ const request = () => {
 					equipamentos.pop();
 				}
 				response.forEach(item => {
-					equipamentos.push(Equipamento(item));
+					equipamentos.push(item);
 				});
 			}
 		});

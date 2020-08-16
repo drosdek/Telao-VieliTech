@@ -1,4 +1,4 @@
-const alimentaDoc = (equipamento) => () => {
+const alimentaDoc = (equipamento) => {
 	$('#equipamento').html(equipamento.equipamento);
 	$('#horaatual').html(equipamento.horaatual);
 	$('#producao').html(equipamento.producao);
@@ -18,8 +18,20 @@ const alimentaDoc = (equipamento) => () => {
 	$('#oee').html(equipamento.oee);
 }
 
-$(document).ready(async () => {
-	request().then(() => {
-		equipamentos.forEach((equipamento) => setTimeout(alimentaDoc(equipamento), 15000));
+const eqp = {
+	size: 0,
+	index: 0,
+};
+
+const reqEven = async () => {
+	request().then(async () => {
+		eqp.size = equipamentos.length;
+		alimentaDoc(equipamentos[eqp.index]);
+		await setTimeout(() => {
+			eqp.index = eqp.index === (eqp.size - 1) ? 0 : eqp.index += 1;
+		});
 	});
-});
+	setTimeout(reqEven, 15000);
+}
+
+$(document).ready(reqEven);
