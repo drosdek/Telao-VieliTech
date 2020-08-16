@@ -15,4 +15,5 @@ const Equipamento = function (equipamento) {
 	this.labelparada = equipamento.labelparada;
 	this.TempoParado = equipamento.TempoParado;
 	this.inicioparada = equipamento.inicioparada;
+	this.oee = equipamento.oee;
 }
