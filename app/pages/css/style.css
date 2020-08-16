@@ -1,0 +1,335 @@
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+.container {
+	width: 100% !important;
+	max-width: inherit !important;
+}
+
+.color-text {
+    color: white;
+}
+
+.sub-title {
+    font-size: 1.5rem;
+}
+
+.font-vieli {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.borda {
+    padding: 0px !important;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    height: 55px;
+    margin: 0.25rem;
+}
+
+.margem {
+    margin: 0.05rem !important;
+}
+
+.alinha-text {
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (max-width: 360px) {
+    .sub-title {
+        font-size: 1.5pc !important;
+    }
+    .tamanho-font {
+        font-size: 3.15pc !important;
+    }
+    .font-producao {
+        font-size: 3.7pc !important;
+    }
+    .font-meta {
+        font-size: 5.5pc !important;
+    }
+    .font-indicadores {
+        font-size: 4.5pc !important;
+    }
+    .font-title {
+        font-size: 1.5pc !important;
+    }
+    .font-status {
+        font-size: 1.2pc !important;
+    }
+    .logo {
+        display: flex;
+        align-items: center;
+        height: 30px;
+        margin: 0.25rem;
+    }
+    .cronometro {
+        font-size: 4pc;
+        color: #000000;
+        display: inline-block;
+    }
+    input {
+        background: #FFA500;
+        line-height: 100px;
+        width: 100%;
+        text-align: center;
+        border: none;
+    }
+}
+
+@media screen and (min-width: 321px) and (max-width: 648px) {
+    .sub-title {
+        font-size: 1.9pc !important;
+    }
+    .tamanho-font {
+        font-size: 2pc !important;
+    }
+    .font-producao {
+        font-size: 4.7pc !important;
+    }
+    .font-meta {
+        font-size: 3.5pc !important;
+    }
+    .font-indicadores {
+        font-size: 2.0pc !important;
+    }
+    .font-title {
+        font-size: 1.5pc !important;
+    }
+    .font-status {
+        font-size: 1.0pc !important;
+    }
+    .logo {
+        display: flex;
+        align-items: center;
+        height: 30px;
+        margin: 0.25rem;
+    }
+    .cronometro {
+        font-size: 4.5pc;
+        color: #000000;
+        display: inline-block;
+    }
+    input {
+        background: #FFA500;
+        line-height: 100px;
+        width: 100%;
+        text-align: center;
+        border: none;
+    }
+}
+
+@media screen and (min-width: 649px) and (max-width: 768px) {
+    .sub-title {
+        font-size: 1.0pc !important;
+    }
+    .tamanho-font {
+        font-size: 1.35pc !important;
+    }
+    .font-producao {
+        font-size: 6.7pc !important;
+    }
+    .font-meta {
+        font-size: 3pc !important;
+    }
+    .font-indicadores {
+        font-size: 1.7pc !important;
+    }
+    .font-title {
+        font-size: 1.5pc !important;
+    }
+    .font-status {
+        font-size: 1.0pc !important;
+    }
+    .logo {
+        display: flex;
+        align-items: center;
+        height: 30px;
+        margin: 0.25rem;
+    }
+    .cronometro {
+        font-size: 4.5pc;
+        color: #000000;
+        display: inline-block;
+    }
+    input {
+        background: #FFA500;
+        line-height: 100px;
+        width: 100%;
+        text-align: center;
+        border: none;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 992px) {
+    .sub-title {
+        font-size: 1.0pc !important;
+    }
+    .tamanho-font {
+        font-size: 3.15pc !important;
+    }
+    .font-producao {
+        font-size: 12.7pc !important;
+    }
+    .font-meta {
+        font-size: 3.5pc !important;
+    }
+    .font-indicadores {
+        font-size: 2.0pc !important;
+    }
+    .font-title {
+        font-size: 1.5pc !important;
+    }
+    .font-status {
+        font-size: 1.0pc !important;
+    }
+    .logo {
+        display: flex;
+        align-items: center;
+        height: 30px;
+        margin: 0.25rem;
+    }
+    .cronometro {
+        font-size: 4.5pc;
+        color: #000000;
+        display: inline-block;
+    }
+    input {
+        background: #FFA500;
+        line-height: 100px;
+        width: 100%;
+        text-align: center;
+        border: none;
+    }
+}
+
+@media screen and (min-width: 993px) and (max-width: 1025px) {
+    .sub-title {
+        font-size: 1.7pc !important;
+    }
+    .tamanho-font {
+        font-size: 3.15pc !important;
+    }
+    .font-producao {
+        font-size: 12.7pc !important;
+    }
+    .font-meta {
+        font-size: 5.5pc !important;
+    }
+    .font-indicadores {
+        font-size: 3.5pc !important;
+    }
+    .font-title {
+        font-size: 2.3pc !important;
+    }
+    .font-status {
+        font-size: 1.7pc !important;
+    }
+    .logo {
+        display: flex;
+        align-items: center;
+        height: 30px;
+        margin: 0.25rem;
+    }
+    .cronometro {
+        font-size: 13pc;
+        color: #000000;
+        display: inline-block;
+    }
+    input {
+        background: #FFA500;
+        line-height: 100px;
+        width: 100%;
+        text-align: center;
+        border: none;
+    }
+}
+
+@media screen and (min-width: 1026px) and (max-width: 1367px) {
+    .sub-title {
+        font-size: 1.5pc !important;
+    }
+    .tamanho-font {
+        font-size: 3.15pc !important;
+    }
+    .font-producao {
+        font-size: 12.7pc !important;
+    }
+    .font-meta {
+        font-size: 5.5pc !important;
+    }
+    .font-indicadores {
+        font-size: 4.5pc !important;
+    }
+    .font-title {
+        font-size: 2.3pc !important;
+    }
+    .font-status {
+        font-size: 2.3pc !important;
+    }
+    .logo {
+        display: flex;
+        align-items: center;
+        height: 30px;
+        margin: 0.25rem;
+    }
+    .cronometro {
+        font-size: 13pc;
+        color: #000000;
+        display: inline-block;
+    }
+    input {
+        background: #FFA500;
+        line-height: 100px;
+        width: 100%;
+        text-align: center;
+        border: none;
+    }
+}
+
+@media (min-width: 1368px) {
+    .sub-title {
+        font-size: 1.5pc !important;
+    }
+    .tamanho-font {
+        font-size: 3.15pc !important;
+    }
+    .font-producao {
+        font-size: 12.7pc !important;
+    }
+    .font-meta {
+        font-size: 5.5pc !important;
+    }
+    .font-indicadores {
+        font-size: 4.5pc !important;
+    }
+    .font-title {
+        font-size: 2.3pc !important;
+    }
+    .font-status {
+        font-size: 2.5pc !important;
+    }
+    .logo {
+        display: flex;
+        align-items: center;
+        height: 30px;
+        margin: 0.25rem;
+    }
+    .cronometro {
+        font-size: 13pc;
+        color: #000000;
+        display: inline-block;
+    }
+    input {
+        background: #FFA500;
+        line-height: 100px;
+        width: 100%;
+        text-align: center;
+        border: none;
+    }
+}
