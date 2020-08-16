@@ -9,6 +9,6 @@ Node JS
 
 Basta rodar o comando
 
-```npm install```
+<b>```npm install```</b>
 
 Dentro do diretorio API e APP
