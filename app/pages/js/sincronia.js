@@ -27,9 +27,7 @@ const reqEven = async () => {
 	request().then(async () => {
 		eqp.size = equipamentos.length;
 		alimentaDoc(equipamentos[eqp.index]);
-		await setTimeout(() => {
-			eqp.index = eqp.index === (eqp.size - 1) ? 0 : eqp.index += 1;
-		});
+		eqp.index = eqp.index === (eqp.size - 1) ? 0 : eqp.index += 1;
 	});
 	setTimeout(reqEven, 15000);
 }
