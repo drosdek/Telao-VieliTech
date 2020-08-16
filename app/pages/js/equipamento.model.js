@@ -7,7 +7,7 @@ const Equipamento = function (equipamento) {
 	this.ritmometa = equipamento.ritmometa;
 	this.metaatual = equipamento.metaatual;
 	this.pctmeta = equipamento.pctmeta;
-	this.pctretrabalho = equipamento.pctretrabalho;
+	this.retrabalho = equipamento.retrabalho;
 	this.disponibilidade = disponibilidade;
 	this.performance = equipamento.performance;
 	this.qualidade = equipamento.qualidade;
@@ -15,5 +15,5 @@ const Equipamento = function (equipamento) {
 	this.labelparada = equipamento.labelparada;
 	this.TempoParado = equipamento.TempoParado;
 	this.inicioparada = equipamento.inicioparada;
-	this.oee = equipamento.oee;
+	this.oee = equipamento.metaoee;
 }
