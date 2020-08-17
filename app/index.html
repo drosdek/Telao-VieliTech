@@ -25,48 +25,50 @@
 <body>
 
 	<div class="container">
-		<header>
+		
+		<header id="lista-header">
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12 borda">
-					<div style="background-color: green;" class="card color-text margem font-vieli">
+					<div style='background-color: gray;' class="card color-text margem font-vieli">
 						<div class="card-body">
 							<div class="float-sm-left font-title font-weight-bolder text-sm-center" id="equipamento">
 								NOME EQUIPAMENTO
 							</div>
 							<div class="float-sm-right font-title font-weight-bolder text-sm-center" id="horaatual">
-								15/08/2020 - 18:55
+								HORA ATUAL
 							</div>
-
 						</div>
 					</div>
 				</div>
 			</div>
 		</header>
+
 		<div class="modal fade" id="erro" tabindex="-1">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+						<h5 class="modal-title">Atencao!</h5>
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
 					<div class="modal-body">
-						...
+						Nao foi encontrado nenhum equipamento conectado, ou servidor esta fora!
 					</div>
 				</div>
 			</div>
 		</div>
+
 		<section id="linha-producao">
 			<div class="row align-items-end">
 				<div class="col-lg-9 col-md-9 col-sm-9 borda">
 					<div style="background-color: green;" class="card color-text font-weight-bolder margem font-vieli">
 						<div class="card-body borda alinha-text justify-content-center">
 							<div class="col-lg-10 col-md-10 col-sm-10 font-producao" id="producao">
-								2000
+								0
 							</div>
 							<div class="col-lg-2 col-md-2 col-sm-2 display-4" id="unidade">
-								PC/min
+								UM
 							</div>
 						</div>
 					</div>
@@ -74,7 +76,7 @@
 				<div class="col-lg-3 col-md-3 col-sm-3 borda">
 					<div style="background-color: green;" class="card color-text margem font-vieli">
 						<div class="card-header text-sm-center font-weight-bolder sub-title">RITMO - <div id="unidade">
-								PC/min</div>
+								UM</div>
 						</div>
 						<div class="card-body tamanho-font">
 							<div class="row">
@@ -99,7 +101,7 @@
 					<div style="background-color: green;" class="card margem color-text font-vieli">
 						<div class="card-header text-sm-center font-weight-bolder sub-title">META</div>
 						<div class="card-body text-sm-center font-meta font-weight-bolder" id="metaatual">
-							1000
+							0
 						</div>
 					</div>
 				</div>
@@ -107,7 +109,7 @@
 					<div style="background-color: green;" class="card margem color-text font-vieli">
 						<div class="card-header text-sm-center font-weight-bolder sub-title">% META</div>
 						<div class="card-body text-sm-center font-meta font-weight-bolder" id="pctmeta">
-							50 %
+							0 %
 						</div>
 					</div>
 				</div>
@@ -115,7 +117,7 @@
 					<div style="background-color: green;" class="card margem color-text font-vieli">
 						<div class="card-header text-sm-center font-weight-bolder sub-title">RETRABALHO</div>
 						<div class="card-body text-sm-center font-meta font-weight-bolder" id="pctretrabalho">
-							10 %
+							0 %
 						</div>
 					</div>
 				</div>
@@ -125,18 +127,18 @@
 		<footer>
 			<div class="row">
 				<div class="col-lg-3 col-md-3 col-sm-3 borda">
-					<div style="background-color: green;" class="card margem color-text font-vieli">
+					<div class="card margem color-text font-vieli alertaDisponibilidade">
 						<div class="card-header text-sm-center font-weight-bolder sub-title">Disponibilidade</div>
 						<div class="card-body text-sm-center font-indicadores font-weight-bolder" id="disponibilidade">
-							30 %
+							0 %
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-3 col-sm-3 borda">
-					<div style="background-color: green;" class="card margem color-text font-vieli">
+					<div class="card margem color-text font-vieli alertaPerformance">
 						<div class="card-header text-sm-center font-weight-bolder sub-title">Performance</div>
 						<div class="card-body text-sm-center font-indicadores font-weight-bolder" id="performance">
-							10 %
+							0 %
 						</div>
 					</div>
 				</div>
@@ -144,21 +146,21 @@
 					<div style="background-color: green;" class="card margem color-text font-vieli">
 						<div class="card-header text-sm-center font-weight-bolder sub-title">Qualidade</div>
 						<div class="card-body text-sm-center font-indicadores font-weight-bolder" id="qualidade">
-							100 %
+							0 %
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-3 col-sm-3 borda">
-					<div style="background-color: green;" class="card margem color-text font-vieli">
+					<div class="card margem color-text font-vieli alertaOee alertaPctOee">
 						<div class="card-header text-sm-center font-weight-bolder sub-title">OEE</div>
 						<div class="card-body text-sm-center font-indicadores font-weight-bolder" id="oee">
-							47 %
+							0 %
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="float-sm-right">
-				<img class="logo" src="../img/svg/logo.svg" alt="Logo" title="Vieli Tech">
+				<img class="logo" src="assets/img/logo/vieli.svg" alt="Logo" title="Vieli Tech">
 			</div>
 		</footer>
 	</div>
