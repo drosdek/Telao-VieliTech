@@ -2,7 +2,24 @@ const alimentaDoc = (equipamento) => {
 	if (equipamento) {
 		if (equipamento.inicioparada && equipamento.inicioparada !== 'null') {
 			eqp.dP = new Date(equipamento.inicioparada);
-	
+
+			$('#lista-header').html(`
+				<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 borda">
+					<div style='background-color: orange; color: black' class="card color-text margem font-vieli">
+						<div class="card-body">
+							<div class="float-sm-left font-title font-weight-bolder text-sm-center" id="equipamento">
+								NOME EQUIPAMENTO
+							</div>
+							<div class="float-sm-right font-title font-weight-bolder text-sm-center" id="horaatual">
+								HORA ATUAL
+							</div>
+						</div>
+					</div>
+				</div>
+				</div>
+			`);
+
 			$('#linha-producao').html(`
 				<div class="row">
 					<div class="col-lg-6 col-md-6 col-sm-6 borda">
@@ -44,9 +61,9 @@ const alimentaDoc = (equipamento) => {
 						</div>
 					</div>
 					<div class="col-lg-4 col-md-4 col-sm-4 borda">
-						<div style='background-color: orange;' class="card margem color-text font-vieli">
+						<div class="card margem color-text font-vieli alertaMeta">
 							<div class="card-header text-sm-center font-weight-bolder sub-title">% META</div>
-							<div class="card-body text-sm-center font-meta font-weight-bolder	" id="pctmeta">
+							<div class="card-body text-sm-center font-meta font-weight-bolder	pctmeta" id="pctmeta">
 								% Meta
 							</div>
 						</div>
@@ -62,6 +79,22 @@ const alimentaDoc = (equipamento) => {
 				</div>
 			`);
 		} else {
+			$('#lista-header').html(`
+			<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12 borda">
+				<div style='background-color: green;' class="card color-text margem font-vieli">
+					<div class="card-body">
+						<div class="float-sm-left font-title font-weight-bolder text-sm-center" id="equipamento">
+							NOME EQUIPAMENTO
+						</div>
+						<div class="float-sm-right font-title font-weight-bolder text-sm-center" id="horaatual">
+							HORA ATUAL
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+		`);
 			$('#linha-producao').html(`
 				<div class="row align-items-end">
 				<div class="col-lg-9 col-md-9 col-sm-9 borda">
@@ -108,7 +141,7 @@ const alimentaDoc = (equipamento) => {
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-4 col-sm-4 borda">
-					<div style="background-color: green;" class="card margem color-text font-vieli">
+					<div style="background-color: green;" class="card margem color-text font-vieli alertaMeta">
 						<div class="card-header text-sm-center font-weight-bolder sub-title">% META</div>
 							<div class="card-body text-sm-center font-meta font-weight-bolder" id="pctmeta">
 								50 %
@@ -143,8 +176,109 @@ const alimentaDoc = (equipamento) => {
 		$('#inicioparada').html(new Date(equipamento.inicioparada).toLocaleString());
 		$('#oee').html(Math.round(equipamento.metaoee).toFixed(1) + " %");
 		$('#motivoparada').html(equipamento.descricao);
+
+		//IF Baseado na % Meta ou %OEE
+		if (Config.metaoee == true) {
+			if (equipamento.pctmeta < Config.valores.vermelho){
+				$(".alertaMeta").css({
+					backgroundColor: "red",
+					color: "white"
+				});
+			} else if (equipamento.pctmeta < Config.valores.amarelo){
+				$(".alertaMeta").css({
+					backgroundColor: "yellow", 
+					color: "black"
+				});
+			} else {
+				$(".alertaMeta").css("background-color", "green");
+			}
+		} else {
+			if (equipamento.metaoee < Config.valores.vermelho){
+				$(".alertaOee").css({
+					backgroundColor: "red",
+					color: "white"
+				});
+			} else if (equipamento.metaoee < Config.valores.amarelo){
+				$(".alertaOee").css({
+					backgroundColor: "yellow", 
+					color: "black"
+				});
+			} else {
+				$(".alertaOee").css("background-color", "green");
+			}
+		}
+
+		// IF baseado na Disponibilidade
+		if (Config.pctdisponibilidade == true){
+			if (equipamento.disponibilidade < Config.disponibilidade.vermelho) {
+				$(".alertaDisponibilidade").css({
+					backgroundColor: "red",
+					color: "white"
+				});
+			} else if (equipamento.disponibilidade < Config.disponibilidade.amarelo) {
+				$(".alertaDisponibilidade").css({
+					backgroundColor: "yellow", 
+					color: "black"
+				});
+			} else {
+				$(".alertaDisponibilidade").css("background-color", "green");
+			}
+		}
+
+		// IF baseado na Performance
+		if (Config.pctperformance == true){
+			if (equipamento.performance < Config.performance.vermelho) {
+				$(".alertaPerformance").css({
+					backgroundColor: "red",
+					color: "white"
+				});
+			} else if (equipamento.performance < Config.performance.amarelo) {
+				$(".alertaPerformance").css({
+					backgroundColor: "yellow", 
+					color: "black"
+				});
+			} else {
+				$(".alertaPerformance").css("background-color", "green");
+			}
+		}
+
+		// IF baseado na Qualidade
+		if (Config.pctqualidade == true){
+			if (equipamento.qualidade < Config.qualidade.vermelho) {
+				$(".alertaQualidade").css({
+					backgroundColor: "red",
+					color: "white"
+				});
+			} else if (equipamento.qualidade < Config.qualidade.amarelo) {
+				$(".alertaQualidade").css({
+					backgroundColor: "yellow", 
+					color: "black"
+				});
+			} else {
+				$(".alertaQualidade").css("background-color", "green");
+			}
+		}
+
+		// IF baseado na OEE
+		if (Config.pctoee == true) {
+			if (equipamento.oee < Config.oee.vermelho) {
+				$(".alertaPctOee").css({
+					backgroundColor: "red",
+					color: "white"
+				});
+			} else if (equipamento.oee < Config.oee.amarelo) {
+				$(".alertaPctOee").css({
+					backgroundColor: "yellow", 
+					color: "black"
+				});
+			} else {
+				$(".alertaPctOee").css("background-color", "green");
+			}
+		}
 	}
 }
+
+
 
 const eqp = {
 	size: 0,
