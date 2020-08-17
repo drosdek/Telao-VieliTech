@@ -17,7 +17,7 @@ const alimentaDoc = (equipamento) => {
 					</div>
 					<div class="col-lg-6 col-md-6 col-sm-6 borda">
 						<div style='background-color: orange;' class="card margem font-vieli">
-							<div class="card-body borda alinha-text justify-content-center font-status font-weight-bolder" id="descricao">
+							<div class="card-body borda alinha-text justify-content-center font-status font-weight-bolder" id="motivoparada">
 								Motivo Parada
 							</div>
 						</div>
@@ -27,12 +27,8 @@ const alimentaDoc = (equipamento) => {
 				<div class="row">
 					<div class="col-lg-12 col-md-12 col-sm-12 borda">
 						<div style='background-color: orange;' class="card margem font-vieli">
-							<div class="card-body borda alinha-text justify-content-center" id="TempoParado">
-								<body name="view" onload="setInterval('tempo()',983);return false;">
-									<form name="view">
-										<input class="cronometro font-weight-bolder" type="text" name="cronometro" />
-									</form>
-								</body>
+							<div class="card-body borda alinha-text justify-content-center">
+								<div id="TempoParado" class="font-weight-bolder cronometro"> 00:00:00 </div>
 							</div>
 						</div>
 					</div>
@@ -146,7 +142,8 @@ const alimentaDoc = (equipamento) => {
 		$('#unidade').html(equipamento.unidade);
 		$('#labelparada').html(equipamento.labelparada);
 		$('#inicioparada').html(new Date(equipamento.inicioparada).toLocaleString());
-		$('#oee').html(Math.round(equipamento.oee).toFixed(1) + " %");
+		$('#oee').html(Math.round(equipamento.metaoee).toFixed(1) + " %");
+		$('#motivoparada').html(equipamento.descricao);
 	}
 }
 
@@ -158,7 +155,7 @@ const eqp = {
 
 const cron = () => {
 	const dif = new Date(Math.abs(new Date().getTime() - eqp.dP.getTime()));
-	$('#TempoParado').html(`${dif.getDate()} - ${dif.toLocaleTimeString()}`);
+	$('#TempoParado').html(`${dif.getDate()} Dias - ${dif.toLocaleTimeString()}`);
 	setTimeout(cron, 1000);
 }
 
