@@ -128,7 +128,6 @@ const alimentaDoc = (equipamento) => {
 		}
 
 		$('#equipamento').html(equipamento.equipamento);
-		$('#horaatual').html(new Date(equipamento.horaatual).toLocaleString());
 		$('#producao').html(Math.round(equipamento.producao).toFixed(1));
 		$('#ritmominuto').html(Math.round(equipamento.ritmominuto).toFixed(1));
 		$('#ritmodia').html(Math.round(equipamento.ritmodia).toFixed(1));
@@ -159,6 +158,12 @@ const cron = () => {
 	setTimeout(cron, 1000);
 }
 
+const horaAtual = () => {
+	const horaatual = new Date();
+	$('#horaatual').html(`${horaatual.toLocaleDateString()} - ${horaatual.toLocaleTimeString()}`);
+	setTimeout(horaAtual, 1000);
+}
+
 const reqEven = async () => {
 	request().then(async () => {
 		eqp.size = equipamentos.length;
@@ -178,4 +183,5 @@ const reqEven = async () => {
 $(document).ready(() => {
 	reqEven();
 	cron();
+	horaAtual();
 });
