@@ -16,4 +16,5 @@ const Equipamento = function (equipamento) {
 	this.TempoParado = equipamento.TempoParado;
 	this.inicioparada = equipamento.inicioparada;
 	this.oee = equipamento.metaoee;
+	this.motivoparada = equipamento.descricao;
 }
