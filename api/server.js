@@ -29,5 +29,5 @@ require("./routes/equipameto.routes.js")(app);
 
 // set port, listen for requests
 app.listen(8081, () => {
-  console.log("Server is running on port 3000.");
+  console.log("Server is running on port 8081.");
 });
