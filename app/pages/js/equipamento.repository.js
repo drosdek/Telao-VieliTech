@@ -1,4 +1,4 @@
-const url = "http://localhost:8081/eqp"
+const url = "http://localhost:8081/equipamentos"
 const equipamentos = []
 
 const request = () => {
