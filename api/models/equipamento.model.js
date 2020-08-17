@@ -17,10 +17,14 @@ const Equipamento = function (equipamento) {
 	this.labelparada = equipamento.labelparada;
 	this.TempoParado = equipamento.TempoParado;
 	this.inicioparada = equipamento.inicioparada;
+	this.metaoee = equipamento.metaoee;
+	this.motivoparada = equipamento.descricao;
 }
 
 Equipamento.findByID = (equipamentoId, result) => {
-	sql.query(`SELECT * FROM oee_telao WHERE id_equipamento = ${equipamentoId}`, (err, res) =>{
+	//SELECT * FROM aponta_temasa.oee_telao INNER JOIN motparada ON oee_telao.id_equipamento = motparada.idmotparada
+	//sql.query(`SELECT * FROM oee_telao WHERE id_equipamento = ${equipamentoId}`, (err, res) =>{
+	sql.query(`SELECT * FROM oee_telao INNER JOIN motparada ON oee_telao.id_equipamento = ${equipamentoId} = motparada.idmotparada`, (err, res) => {
 		if(err){
 			console.log("error", err);
 			result(err, null);
@@ -38,7 +42,7 @@ Equipamento.findByID = (equipamentoId, result) => {
 
 
 Equipamento.getAll = (result) => {
-	sql.query("SELECT * FROM oee_telao", (err, res) => {
+	sql.query("SELECT * FROM oee_telao INNER JOIN motparada ON oee_telao.id_equipamento = motparada.idmotparada", (err, res) => {
 	  if (err) {
 		 console.log("error: ", err);
 		 result(null, err);
