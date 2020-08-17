@@ -42,7 +42,7 @@ Equipamento.findByID = (equipamentoId, result) => {
 
 
 Equipamento.getAll = (result) => {
-	sql.query("SELECT * FROM oee_telao INNER JOIN motparada ON oee_telao.id_equipamento = motparada.idmotparada", (err, res) => {
+	sql.query("SELECT * FROM oee_telao INNER JOIN motparada ON oee_telao.id_equipamento = motparada.idmotparada ORDER BY oee_telao.id_equipamento", (err, res) => {
 	  if (err) {
 		 console.log("error: ", err);
 		 result(null, err);
