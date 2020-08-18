@@ -46,35 +46,33 @@
 				<div style='background-color: orange;' class="card margem font-vieli">
 					<div class="card-body borda alinha-text justify-content-center">
 						<div class="font-status"><b>PARADA DESDE: </b></div> 
-						<div class="font-status" id="labelparada">Parada Desde</div>
+						<div class="font-status" id="inicioparada">
+							Parada Desde
+						</div>
 					</div>
 				</div>
 			</div>
 			<div class="col-lg-6 col-md-6 col-sm-6 borda">
 				<div style='background-color: orange;' class="card margem font-vieli">
-					<div class="card-body borda alinha-text justify-content-center font-status font-weight-bolder" id="descricao">
+					<div class="card-body borda alinha-text justify-content-center font-status font-weight-bolder" id="motivoparada">
 						Motivo Parada
 					</div>
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="row">
 			<div class="col-lg-12 col-md-12 col-sm-12 borda">
 				<div style='background-color: orange;' class="card margem font-vieli">
-					<div class="card-body borda alinha-text justify-content-center" id="TempoParado">
-						<body name="view" onload="setInterval('tempo()',983);return false;">
-							<form name="view">
-								<input class="cronometro font-weight-bolder" type="text" name="cronometro" />
-							</form>
-						</body>
+					<div class="card-body borda alinha-text justify-content-center">
+						<div id="TempoParado" class="font-weight-bolder cronometro"> 00:00:00 </div>
 					</div>
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="row">
-			<div class="col-lg-5 col-md-5 col-sm-5 borda">
+			<div class="col-lg-4 col-md-4 col-sm-4 borda">
 				<div style='background-color: orange;' class="card margem font-vieli">
 					<div class="card-header text-sm-center font-weight-bolder sub-title">PRODUZIDO</div>
 					<div class="card-body text-sm-center font-meta font-weight-bolder" id="producao">
@@ -90,10 +88,10 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-lg-3 col-md-3 col-sm-3 borda">
+			<div class="col-lg-4 col-md-4 col-sm-4 borda">
 				<div style='background-color: orange;' class="card margem color-text font-vieli">
 					<div class="card-header text-sm-center font-weight-bolder sub-title">RETRABALHO</div>
-					<div class="card-body text-sm-center font-meta font-weight-bolder" id="pctretrabalho">
+					<div class="card-body text-sm-center font-meta font-weight-bolder" id="retrabalho">
 						10 %
 					</div>
 				</div>
@@ -130,7 +128,7 @@
 			</div>
 		</div>
 		<div class="float-sm-right">
-			<img class="logo" src="../img/svg/logo.svg" alt="Logo" title="Vieli Tech">
+			<img class="logo" src="assets/img/logo/vieli.svg" alt="Logo" title="Vieli Tech">
 		</div>
 		</div>
 	</footer>
