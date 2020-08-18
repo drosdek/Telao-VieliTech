@@ -103,7 +103,7 @@ const alimentaDoc = (equipamento) => {
 								<div class="col-lg-8 col-md-8 col-sm-8 font-producao" id="producao">
 									2000
 								</div>
-								<div class="col-lg-2 col-md-2 col-sm-2 display-4 font-weight-bolder" id="unidade">
+								<div class="col-lg-2 col-md-2 col-sm-2 sub-title font-weight-bolder" id="unidade">
 									UM
 								</div>
 							</div>
