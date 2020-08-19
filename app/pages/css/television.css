@@ -1,0 +1,182 @@
+/* ___________________________________________________________________ *
+ * Queries Baseadas em Resolucoes landscape | HD | FULL-HD | 2K | 4K | *
+ * ------------------------------------------------------------------- */
+
+ /* Media Querie Televisores HD  */
+ @media screen and (min-width: 1024px) and (max-height: 720px) and (orientation:landscape) {
+	.sub-title {
+		font-size: 1pc !important;
+	}
+
+	.tamanho-font {
+		font-size: 1.42pc !important;
+	}
+
+	.font-producao {
+		font-size: 8pc !important;
+	}
+
+	.font-meta {
+		font-size: 3pc !important;
+	}
+
+	.font-indicadores {
+		font-size: 3pc !important;
+	}
+
+	.font-title {
+		font-size: 2pc !important;
+	}
+
+	.font-status {
+		font-size: 4pc !important;
+	}
+
+	.cronometro {
+		font-size: 16pc;
+		color: #000000;
+		display: inline-block;
+	}
+
+	.logo {
+		display: flex;
+		align-items: center;
+		height: 4.5pc;
+		margin: 0.25rem;
+	}
+}
+
+ /* Media Querie Televisores FULL-HD  */
+ @media screen and (min-width: 1920px) and (min-height: 1080px) and (orientation:landscape) {
+	.sub-title {
+		font-size: 2pc !important;
+	}
+
+	.tamanho-font {
+		font-size: 3.76pc !important;
+	}
+
+	.font-producao {
+		font-size: 16pc !important;
+	}
+
+	.font-meta {
+		font-size: 5pc !important;
+	}
+
+	.font-indicadores {
+		font-size: 5pc !important;
+	}
+
+	.font-title {
+		font-size: 4pc !important;
+	}
+
+	.font-status {
+		font-size: 4pc !important;
+	}
+
+	.cronometro {
+		font-size: 16pc;
+		color: #000000;
+		display: inline-block;
+	}
+
+	.logo {
+		display: flex;
+		align-items: center;
+		height: 4.5pc;
+		margin: 0.25rem;
+	}
+}
+
+ /* Media Querie Televisores 2K */
+ @media screen and (max-width: 2048px) and (min-height: 1080px) and (orientation:landscape) {
+	.sub-title {
+		font-size: 2pc !important;
+	}
+
+	.tamanho-font {
+		font-size: 3.76pc !important;
+	}
+
+	.font-producao {
+		font-size: 16pc !important;
+	}
+
+	.font-meta {
+		font-size: 5pc !important;
+	}
+
+	.font-indicadores {
+		font-size: 5pc !important;
+	}
+
+	.font-title {
+		font-size: 4pc !important;
+	}
+
+	.font-status {
+		font-size: 4pc !important;
+	}
+
+	.cronometro {
+		font-size: 16pc;
+		color: #000000;
+		display: inline-block;
+	}
+
+	.logo {
+		display: flex;
+		align-items: center;
+		height: 4.5pc;
+		margin: 0.25rem;
+	}
+}
+
+ /* Media Querie Televisores 4K */
+ @media screen and (max-width: 3840px) and (min-height: 2160px) and (orientation:landscape) {
+	.sub-title {
+		font-size: 3pc !important;
+	}
+
+	.tamanho-font {
+		font-size: 7.5pc !important;
+	}
+
+	.font-producao {
+		font-size: 28.2pc !important;
+	}
+
+	.font-meta {
+		font-size: 13pc !important;
+	}
+
+	.font-indicadores {
+		font-size: 13pc !important;
+	}
+
+	.font-title {
+		font-size: 6pc !important;
+	}
+
+	.font-status {
+		font-size: 4pc !important;
+	}
+	.umProducao {
+		font-size: 3pc;
+	}
+
+	.cronometro {
+		font-size: 16pc;
+		color: #000000;
+		display: inline-block;
+	}
+
+	.logo {
+		display: flex;
+		align-items: center;
+		height: 9pc;
+		margin: 0.25rem;
+	}
+}
