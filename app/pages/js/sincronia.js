@@ -103,7 +103,7 @@ const alimentaDoc = (equipamento) => {
 								<div class="col-lg-8 col-md-8 col-sm-8 font-producao" id="producao">
 									2000
 								</div>
-								<div class="col-lg-2 col-md-2 col-sm-2 sub-title font-weight-bolder" id="unidade">
+								<div class="col-lg-3 col-md-3 col-sm-3 font-weight-bolder font-um-producao" id="unidade">
 									UM
 								</div>
 							</div>
@@ -341,20 +341,20 @@ const horaAtual = () => {
 }
 
 const reqEven = async() => {
-    request().then(async() => {
-        eqp.size = equipamentos.length;
-        alimentaDoc(equipamentos[eqp.index]);
-        eqp.index = eqp.index === (eqp.size - 1) ? 0 : eqp.index += 1;
-        if (eqp.size === 0) {
-            $('#erro').modal('show');
-        } else {
-            $('#erro').modal('hide');
-        }
-    }).catch(() => {
-        $('#erro').modal('show');
-    });
-    setTimeout(reqEven, Config.tempodetransicao);
-}
+	request().then(async() => {
+		eqp.size = equipamentos.length;
+		alimentaDoc(equipamentos[eqp.index]);
+		eqp.index = eqp.index === (eqp.size - 1) ? 0 : eqp.index += 1;
+		if (eqp.size === 0) {
+			$('#erro').modal('show');
+		} else {
+			$('#erro').modal('hide');
+		}
+	}).catch(() => {
+		$('#erro').modal('show');
+	});
+	setTimeout(reqEven, Config.tempodetransicao);
+	}
 
 $(document).ready(() => {
     reqEven();
