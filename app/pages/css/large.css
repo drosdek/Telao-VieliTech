@@ -1,0 +1,47 @@
+/* Large devices (laptops/desktops, 768px and up) */
+@media only screen and (min-width: 768px) {
+	.sub-title {
+		font-size: 3pc !important;
+	}
+
+	.tamanho-font {
+		font-size: 4.77pc !important;
+	}
+
+	.font-producao {
+		font-size: 20pc !important;
+	}
+
+	.font-meta {
+		font-size: 8pc !important;
+	}
+
+	.font-indicadores {
+		font-size: 6pc !important;
+	}
+
+	.font-title {
+		font-size: 3pc !important;
+	}
+
+	.font-status {
+		font-size: 4pc !important;
+	}
+
+	.font-um-producao {
+		font-size: 4pc;
+	}
+
+	.cronometro {
+		font-size: 16pc;
+		color: #000000;
+		display: inline-block;
+	}
+
+	.logo {
+		display: flex;
+		align-items: center;
+		height: 7pc;
+		margin: 0.25rem;
+	}
+}
