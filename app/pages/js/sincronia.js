@@ -323,21 +323,21 @@ const alimentaDoc = (equipamento) => {
 
 
 const eqp = {
-    size: 0,
-    index: 0,
-    dP: new Date(),
+	size: 0,
+	index: 0,
+	dP: new Date(),
 };
 
 const cron = () => {
-    const dif = new Date(Math.abs(new Date().getTime() - eqp.dP.getTime()));
-    $('#TempoParado').html(`${dif.getDate()} Dias - ${dif.toLocaleTimeString()}`);
-    setTimeout(cron, 1000);
+	const dif = new Date(Math.abs(new Date().getTime() - eqp.dP.getTime()));
+	$('#TempoParado').html(`${dif.getDate()} Dias - ${dif.toLocaleTimeString()}`);
+	setTimeout(cron, 1000);
 }
 
 const horaAtual = () => {
-    const horaatual = new Date();
-    $('#horaatual').html(`${horaatual.toLocaleDateString()} - ${horaatual.toLocaleTimeString()}`);
-    setTimeout(horaAtual, 1000);
+	const horaatual = new Date();
+	$('#horaatual').html(`${horaatual.toLocaleDateString()} - ${horaatual.toLocaleTimeString()}`);
+	setTimeout(horaAtual, 1000);
 }
 
 const reqEven = async() => {
@@ -357,7 +357,7 @@ const reqEven = async() => {
 	}
 
 $(document).ready(() => {
-    reqEven();
-    cron();
-    horaAtual();
+	reqEven();
+	cron();
+	horaAtual();
 });
