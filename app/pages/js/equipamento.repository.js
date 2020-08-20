@@ -1,4 +1,4 @@
-const url = "http://localhost:8081/equipamentos"
+const url = Config.conecta_url+"/equipamentos"
 const equipamentos = []
 
 const request = () => {
