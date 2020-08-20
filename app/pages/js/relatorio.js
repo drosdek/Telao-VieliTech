@@ -55,14 +55,15 @@ const alimentaRel = (relatorio) => {
 
 		$('#lista-relatorio').append(`
 		<tr>
-		<td>${relatorio[t].equipamento}</td>
-		<td class="text-sm-center">${Math.round(relatorio[t].producao).toFixed(1)}</td>
-		<td class="text-sm-center ${alMeta}">${Math.round(relatorio[t].pctmeta).toFixed(1) + " %"}</td>
-		<td class="text-sm-center">${relatorio[t].descricao}</td>
-		<td class="text-sm-center ${alDip}">${Math.round(relatorio[t].disponibilidade).toFixed(1) + " %"}</td>
-		<td class="text-sm-center ${alPerf}">${Math.round(relatorio[t].performance).toFixed(1) + " %"}</td>
-		<td class="text-sm-center ${alQual}">${Math.round(relatorio[t].qualidade).toFixed(1) + " %"}</td>
-		<td class="text-sm-center ${alOee}">${Math.round(relatorio[t].metaoee).toFixed(1) + " %"}</td>
+		<td class="align-middle">${relatorio[t].equipamento}</td>
+		<td class="text-sm-center align-middle">${Math.round(relatorio[t].producao).toFixed(1)}</td>
+		<td class="text-sm-center align-middle ${alMeta}">${Math.round(relatorio[t].pctmeta).toFixed(1) + " %"}</td>
+		<td class="text-sm-center align-middle">${relatorio[t].descricao}</td>
+		<td class="text-sm-center align-middle ${alDip}">${Math.round(relatorio[t].disponibilidade).toFixed(1) + " %"}</td>
+		<td class="text-sm-center align-middle ${alPerf}">${Math.round(relatorio[t].performance).toFixed(1) + " %"}</td>
+		<td class="text-sm-center align-middle ${alQual}">${Math.round(relatorio[t].qualidade).toFixed(1) + " %"}</td>
+		<td class="text-sm-center align-middle ${alOee}">${Math.round(relatorio[t].metaoee).toFixed(1) + " %"}</td>
+		<td class="text-sm-center align-middle"><button type="button" class="btn btn-info">View</button></td>
 		</tr>`);
 	}
 
@@ -70,8 +71,6 @@ const alimentaRel = (relatorio) => {
 
  const eqp = {
  	size: 0,
- 	index: 0,
- 	dP: new Date(),
  };
 
 
@@ -80,12 +79,12 @@ const reqEventRel = async() => {
 		eqp.size = equipamentos.length;
 		alimentaRel(equipamentos);
 		if (eqp.size === 0) {
-			$('#erro').modal('show');
+			$('#error').modal('show');
 		} else {
-			$('#erro').modal('hide');
+			$('#error').modal('hide');
 		}
 	}).catch (() => {
-		$('#erro').modal('show');
+		$('#error').modal('show');
 	});
 }
 
