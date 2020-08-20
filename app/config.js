@@ -16,10 +16,10 @@ const Config = {
 	  * Para que funcione corretamente apenas uma das duas opcoes pode receber TRUE
 	  */
 	metaoee: true, // Marque como false caso trabalhado com PCT de Meta
-	pctmeta: false,// Marque como false caso trabalhado com Meta OEE
+	pctmeta: true,// Marque como false caso trabalhado com Meta OEE
 	valores: { // Valores para alertas
-		vermelho: 65.0, // Valores abaixo de
-		amarelo: 76.0, // Valores acima do anterior e abaixo de
+		vermelho: 45.0, // Valores abaixo de
+		amarelo: 65.0, // Valores acima do anterior e abaixo de
 		verde: 100.0, // Valores abaixo de
 	},
 
@@ -28,9 +28,9 @@ const Config = {
 	//Selecione True para ativar alerta na Disponibilidade
 	pctdisponibilidade: true,
 	disponibilidade: {
-		vermelho: 10.0, // Valores abaixo de
-		amarelo: 20.0, // Valores acima do anterior e abaixo de
-		verde: 100.0, // Valores abaixo de
+		vermelho: 50.0, // Valores abaixo de
+		amarelo: 60.0, // Valores acima do anterior e abaixo de
+		verde: 80.0, // Valores acima de
 	},
 	//Selecione True para ativar alerta na Performance
 	pctperformance: true,
