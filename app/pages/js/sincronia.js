@@ -1,9 +1,9 @@
 const alimentaDoc = (equipamento) => {
-    if (equipamento) {
-        if (equipamento.inicioparada && equipamento.inicioparada !== 'null') {
-            eqp.dP = new Date(equipamento.inicioparada);
+	if (equipamento) {
+		if (equipamento.inicioparada && equipamento.inicioparada !== 'null') {
+			eqp.dP = new Date(equipamento.inicioparada);
 
-            $('#lista-header').html(`
+			$('#lista-header').html(`
 				<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12 borda">
 					<div style='background-color: orange; color: black' class="card color-text margem font-vieli">
@@ -20,7 +20,7 @@ const alimentaDoc = (equipamento) => {
 				</div>
 			`);
 
-            $('#linha-producao').html(`
+			$('#linha-producao').html(`
 				<div class="row">
 					<div class="col-lg-6 col-md-6 col-sm-6 borda">
 						<div style='background-color: orange;' class="card margem font-vieli">
@@ -78,24 +78,24 @@ const alimentaDoc = (equipamento) => {
 					</div>
 				</div>
 			`);
-        } else {
-            $('#lista-header').html(`
-			<div class="row">
-			<div class="col-lg-12 col-md-12 col-sm-12 borda font-title ">
-				<div style='background-color: green;' class="card color-text margem font-vieli">
-					<div class="card-body">
-						<div class="float-sm-left font-weight-bolder text-sm-center" id="equipamento">
-							NOME EQUIPAMENTO
-						</div>
-						<div class="float-sm-right font-weight-bolder text-sm-center" id="horaatual">
-							HORA ATUAL
+		} else {
+			$('#lista-header').html(`
+				<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 borda font-title ">
+					<div style='background-color: green;' class="card color-text margem font-vieli">
+						<div class="card-body">
+							<div class="float-sm-left font-weight-bolder text-sm-center" id="equipamento">
+								NOME EQUIPAMENTO
+							</div>
+							<div class="float-sm-right font-weight-bolder text-sm-center" id="horaatual">
+								HORA ATUAL
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			</div>
-		`);
-            $('#linha-producao').html(`
+				</div>
+			`);
+			$('#linha-producao').html(`
 				<div class="row">
 					<div class="col-lg-9 col-md-9 col-sm-9 borda">
 						<div style="background-color: green;" class="card color-text font-weight-bolder margem font-vieli">
@@ -161,163 +161,163 @@ const alimentaDoc = (equipamento) => {
 				</div>
 			</div>
 			`);
-        }
+		}
 
-        $('#equipamento').html(equipamento.equipamento);
-        $('#producao').html(Math.round(equipamento.producao).toFixed(1));
-        $('#ritmominuto').html(Math.round(equipamento.ritmominuto).toFixed(1));
-        $('#ritmodia').html(Math.round(equipamento.ritmodia).toFixed(1));
-        $('#ritmometa').html(Math.round(equipamento.ritmometa).toFixed(1));
-        $('#metaatual').html(Math.round(equipamento.metaatual).toFixed(1));
-        $('#pctmeta').html(Math.round(equipamento.pctmeta).toFixed(1) + " %");
-        $('#retrabalho').html(Math.round(equipamento.retrabalho).toFixed(1) + " %");
-        $('#disponibilidade').html(Math.round(equipamento.disponibilidade).toFixed(1) + " %");
-        $('#performance').html(Math.round(equipamento.performance).toFixed(1) + " %");
-        $('#qualidade').html(Math.round(equipamento.qualidade).toFixed(1) + " %");
-        $('#unidade').html(equipamento.unidade);
-        $('#unidades').html(equipamento.unidade);
-        $('#labelparada').html(equipamento.labelparada);
-        $('#inicioparada').html(new Date(equipamento.inicioparada).toLocaleString());
-        $('#oee').html(Math.round(equipamento.metaoee).toFixed(1) + " %");
-        $('#motivoparada').html(equipamento.descricao);
+		$('#equipamento').html(equipamento.equipamento);
+		$('#producao').html(Math.round(equipamento.producao).toFixed(1));
+		$('#ritmominuto').html(Math.round(equipamento.ritmominuto).toFixed(1));
+		$('#ritmodia').html(Math.round(equipamento.ritmodia).toFixed(1));
+		$('#ritmometa').html(Math.round(equipamento.ritmometa).toFixed(1));
+		$('#metaatual').html(Math.round(equipamento.metaatual).toFixed(1));
+		$('#pctmeta').html(Math.round(equipamento.pctmeta).toFixed(1) + " %");
+		$('#retrabalho').html(Math.round(equipamento.retrabalho).toFixed(1) + " %");
+		$('#disponibilidade').html(Math.round(equipamento.disponibilidade).toFixed(1) + " %");
+		$('#performance').html(Math.round(equipamento.performance).toFixed(1) + " %");
+		$('#qualidade').html(Math.round(equipamento.qualidade).toFixed(1) + " %");
+		$('#unidade').html(equipamento.unidade);
+		$('#unidades').html(equipamento.unidade);
+		$('#labelparada').html(equipamento.labelparada);
+		$('#inicioparada').html(new Date(equipamento.inicioparada).toLocaleString());
+		$('#oee').html(Math.round(equipamento.metaoee).toFixed(1) + " %");
+		$('#motivoparada').html(equipamento.descricao);
 
-        //IF Baseado na % Meta ou %OEE
-        if (Config.metaoee == true) {
-            if (equipamento.pctmeta < Config.valores.vermelho) {
-                $(".alertaMeta").css({
-                    backgroundColor: "red",
-                    color: "white"
-                });
-            } else if (equipamento.pctmeta < Config.valores.amarelo) {
-                $(".alertaMeta").css({
-                    backgroundColor: "yellow",
-                    color: "black"
-                });
-            } else {
-                $(".alertaMeta").css({
-                    backgroundColor: "green",
-                    color: "white"
-                });
-            }
-        } else {
-            if (equipamento.metaoee < Config.valores.vermelho) {
-                $(".alertaOee").css({
-                    backgroundColor: "red",
-                    color: "white"
-                });
-            } else if (equipamento.metaoee < Config.valores.amarelo) {
-                $(".alertaOee").css({
-                    backgroundColor: "yellow",
-                    color: "black"
-                });
-            } else {
-                $(".alertaOee").css({
-                    backgroundColor: "green",
-                    color: "white"
-                });
-            }
-        }
+		//IF Baseado na % Meta ou %OEE
+		if (Config.metaoee == true) {
+			if (equipamento.pctmeta < Config.valores.vermelho) {
+				$(".alertaMeta").css({
+					backgroundColor: "red",
+					color: "white"
+				});
+			} else if (equipamento.pctmeta < Config.valores.amarelo) {
+				$(".alertaMeta").css({
+					backgroundColor: "yellow",
+					color: "black"
+				});
+			} else {
+				$(".alertaMeta").css({
+					backgroundColor: "green",
+					color: "white"
+				});
+			}
+		} else {
+			if (equipamento.metaoee < Config.valores.vermelho) {
+				$(".alertaOee").css({
+					backgroundColor: "red",
+					color: "white"
+				});
+			} else if (equipamento.metaoee < Config.valores.amarelo) {
+				$(".alertaOee").css({
+					backgroundColor: "yellow",
+					color: "black"
+				});
+			} else {
+				$(".alertaOee").css({
+					backgroundColor: "green",
+					color: "white"
+				});
+			}
+		}
 
-        // IF baseado no Retrabalho
-        if (Config.pctretrabalho == true) {
-            if (equipamento.retrabalho <= Config.retrabalho.verde) {
-                $(".alertaRetrabalho").css({
-                    backgroundColor: "green",
-                    color: "white"
-                });
-            } else if (equipamento.retrabalho >= Config.retrabalho.vermelho) {
-                $(".alertaRetrabalho").css({
-                    backgroundColor: "red",
-                    color: "white"
-                });
-            } else if (equipamento.retrabalho >= Config.retrabalho.amarelo) {
-                $(".alertaRetrabalho").css({
-                    backgroundColor: "yellow",
-                    color: "black"
-                });
-            }
-        }
+		// IF baseado no Retrabalho
+		if (Config.pctretrabalho == true) {
+			if (equipamento.retrabalho <= Config.retrabalho.verde) {
+				$(".alertaRetrabalho").css({
+					backgroundColor: "green",
+					color: "white"
+				});
+			} else if (equipamento.retrabalho >= Config.retrabalho.vermelho) {
+				$(".alertaRetrabalho").css({
+					backgroundColor: "red",
+					color: "white"
+				});
+			} else if (equipamento.retrabalho >= Config.retrabalho.amarelo) {
+				$(".alertaRetrabalho").css({
+					backgroundColor: "yellow",
+					color: "black"
+				});
+			}
+		}
 
-        // IF baseado na Disponibilidade
-        if (Config.pctdisponibilidade == true) {
-            if (equipamento.disponibilidade < Config.disponibilidade.vermelho) {
-                $(".alertaDisponibilidade").css({
-                    backgroundColor: "red",
-                    color: "white"
-                });
-            } else if (equipamento.disponibilidade < Config.disponibilidade.amarelo) {
-                $(".alertaDisponibilidade").css({
-                    backgroundColor: "yellow",
-                    color: "black"
-                });
-            } else {
-                $(".alertaDisponibilidade").css({
-                    backgroundColor: "green",
-                    color: "white"
-                });
-            }
-        }
+		// IF baseado na Disponibilidade
+		if (Config.pctdisponibilidade == true) {
+			if (equipamento.disponibilidade < Config.disponibilidade.vermelho) {
+				$(".alertaDisponibilidade").css({
+					backgroundColor: "red",
+					color: "white"
+				});
+			} else if (equipamento.disponibilidade < Config.disponibilidade.amarelo) {
+				$(".alertaDisponibilidade").css({
+					backgroundColor: "yellow",
+					color: "black"
+				});
+			} else {
+				$(".alertaDisponibilidade").css({
+					backgroundColor: "green",
+					color: "white"
+				});
+			}
+		}
 
-        // IF baseado na Performance
-        if (Config.pctperformance == true) {
-            if (equipamento.performance < Config.performance.vermelho) {
-                $(".alertaPerformance").css({
-                    backgroundColor: "red",
-                    color: "white"
-                });
-            } else if (equipamento.performance < Config.performance.amarelo) {
-                $(".alertaPerformance").css({
-                    backgroundColor: "yellow",
-                    color: "black"
-                });
-            } else {
-                $(".alertaPerformance").css({
-                    backgroundColor: "green",
-                    color: "white"
-                });
-            }
-        }
+		// IF baseado na Performance
+		if (Config.pctperformance == true) {
+			if (equipamento.performance < Config.performance.vermelho) {
+				$(".alertaPerformance").css({
+					backgroundColor: "red",
+					color: "white"
+				});
+			} else if (equipamento.performance < Config.performance.amarelo) {
+				$(".alertaPerformance").css({
+					backgroundColor: "yellow",
+					color: "black"
+				});
+			} else {
+				$(".alertaPerformance").css({
+					backgroundColor: "green",
+					color: "white"
+				});
+			}
+		}
 
-        // IF baseado na Qualidade
-        if (Config.pctqualidade == true) {
-            if (equipamento.qualidade < Config.qualidade.vermelho) {
-                $(".alertaQualidade").css({
-                    backgroundColor: "red",
-                    color: "white"
-                });
-            } else if (equipamento.qualidade < Config.qualidade.amarelo) {
-                $(".alertaQualidade").css({
-                    backgroundColor: "yellow",
-                    color: "black"
-                });
-            } else {
-                $(".alertaQualidade").css({
-                    backgroundColor: "green",
-                    color: "white"
-                });
-            }
-        }
+		// IF baseado na Qualidade
+		if (Config.pctqualidade == true) {
+			if (equipamento.qualidade < Config.qualidade.vermelho) {
+				$(".alertaQualidade").css({
+					backgroundColor: "red",
+					color: "white"
+				});
+			} else if (equipamento.qualidade < Config.qualidade.amarelo) {
+				$(".alertaQualidade").css({
+					backgroundColor: "yellow",
+					color: "black"
+				});
+			} else {
+				$(".alertaQualidade").css({
+					backgroundColor: "green",
+					color: "white"
+				});
+			}
+		}
 
-        // IF baseado na OEE
-        if (Config.pctoee == true) {
-            if (equipamento.oee < Config.oee.vermelho) {
-                $(".alertaPctOee").css({
-                    backgroundColor: "red",
-                    color: "white"
-                });
-            } else if (equipamento.oee < Config.oee.amarelo) {
-                $(".alertaPctOee").css({
-                    backgroundColor: "yellow",
-                    color: "black"
-                });
-            } else {
-                $(".alertaPctOee").css({
-                    backgroundColor: "green",
-                    color: "white"
-                });
-            }
-        }
-    }
+		// IF baseado na OEE
+		if (Config.pctoee == true) {
+			if (equipamento.oee < Config.oee.vermelho) {
+				$(".alertaPctOee").css({
+					backgroundColor: "red",
+					color: "white"
+				});
+			} else if (equipamento.oee < Config.oee.amarelo) {
+				$(".alertaPctOee").css({
+					backgroundColor: "yellow",
+					color: "black"
+				});
+			} else {
+				$(".alertaPctOee").css({
+					backgroundColor: "green",
+					color: "white"
+				});
+			}
+		}
+	}
 }
 
 
