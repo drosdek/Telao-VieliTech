@@ -1,0 +1,24 @@
+	<script type = "text/javascript" language = "javascript">
+		$(document).ready(function(){
+			$.getJSON('http://localhost:8081/equipamentos', function(equipamento)  {
+				var table = document.querySelector(".table tbody")
+				//pegando a tabela  
+	
+				//inserindo dinamicamente o objeto dentro da tabela  
+				for(t in equipamento){
+					//t posicao do objeto retorna 'inprog'
+					//objeto[t] retornaria '123'
+					$(table).append("<tr>"+
+						"<td>" + equipamento[t].equipamento + 
+						"<td>" + equipamento[t].producao + 
+						"<td>" + equipamento[t].pctmeta +
+						"<td>" + equipamento[t].descricao +
+						"<td>" + equipamento[t].disponibilidade +
+						"<td>" + equipamento[t].performance +
+						"<td>" + equipamento[t].qualidade +
+						"<td>" + equipamento[t].metaoee +
+							"</tr>")
+				}
+			});
+		});
+	</script>

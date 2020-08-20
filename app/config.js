@@ -15,7 +15,6 @@ const Config = {
 	  * Aqui e definido se deseja criar o alerta baseado pela % META ou OEE
 	  * Para que funcione corretamente apenas uma das duas opcoes pode receber TRUE
 	  */
-	metaoee: true, // Marque como false caso trabalhado com PCT de Meta
 	pctmeta: true,// Marque como false caso trabalhado com Meta OEE
 	valores: { // Valores para alertas
 		vermelho: 45.0, // Valores abaixo de
