@@ -61,9 +61,9 @@ const alimentaDoc = (equipamento) => {
 						</div>
 					</div>
 					<div class="col-lg-4 col-md-4 col-sm-4 borda">
-						<div class="card margem color-text font-vieli alertaMeta">
+						<div style='background-color: orange; color:black' class="card margem color-text font-vieli alertaMeta">
 							<div class="card-header text-sm-center font-weight-bolder sub-title">% META</div>
-							<div class="card-body text-sm-center font-meta font-weight-bolder	pctmeta" id="pctmeta">
+							<div class="card-body text-sm-center font-meta font-weight-bolder" id="pctmeta">
 								% Meta
 							</div>
 						</div>
@@ -182,7 +182,7 @@ const alimentaDoc = (equipamento) => {
 		$('#motivoparada').html(equipamento.descricao);
 
 		//IF Baseado na % Meta ou %OEE
-		if (Config.metaoee == true) {
+		if (Config.pctmeta == true) {
 			if (equipamento.pctmeta < Config.valores.vermelho) {
 				$(".alertaMeta").css({
 					backgroundColor: "red",
