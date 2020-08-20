@@ -34,3 +34,18 @@ body {
 		display: flex;
 		align-items: center;
 	}
+
+.verde {
+	background-color: green;
+	color: white;
+}
+
+.amarelo {
+	background-color: yellow;
+	color: black;
+}
+
+.vermelho {
+	background-color: red;
+	color: white
+}
