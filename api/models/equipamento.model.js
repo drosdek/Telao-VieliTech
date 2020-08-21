@@ -21,28 +21,31 @@ const Equipamento = function (equipamento) {
 	this.motivoparada = equipamento.descricao;
 }
 
-Equipamento.findByID = (equipamentoId, result) => {
-	//SELECT * FROM aponta_temasa.oee_telao INNER JOIN motparada ON oee_telao.id_equipamento = motparada.idmotparada
-	//sql.query(`SELECT * FROM oee_telao WHERE id_equipamento = ${equipamentoId}`, (err, res) =>{
-	sql.query(`SELECT * FROM oee_telao INNER JOIN motparada ON oee_telao.id_equipamento = ${equipamentoId} = motparada.idmotparada`, (err, res) => {
-		if(err){
-			console.log("error", err);
-			result(err, null);
-			return;
-		}
-
-		if (res.legth) {
-			console.log("Found equipamento: ", res[0]);
-			result(null, res[0]);
-			return;
-		}
-		return({ kind: "not_found"}, null);
+Equipamento.findById = (equipamentoId, result) => {
+	sql.query(`SELECT * FROM oee_telao WHERE id_equipamento = ${equipamentoId}`, (err, res) => {
+	  if (err) {
+		console.log("error: ", err);
+		result(err, null);
+		return;
+	  }
+  
+	  if (res.length) {
+		console.log("found equipament: ", res[0]);
+		result(null, res[0]);
+		return;
+	  }
+  
+	  // not found Customer with the id
+	  result({ kind: "not_found" }, null);
 	});
-}
+  };
 
 
 Equipamento.getAll = (result) => {
-	sql.query("SELECT * FROM oee_telao INNER JOIN motparada ON oee_telao.id_equipamento = motparada.idmotparada ORDER BY oee_telao.id_equipamento", (err, res) => {
+	sql.query(`SELECT oee_telao.id_equipamento, oee_telao.equipamento, oee_telao.unidade, oee_telao.producao, oee_telao.retrabalho, 
+	oee_telao.metaatual, oee_telao.disponibilidade, oee_telao.performance, oee_telao.qualidade, oee_telao.pctmeta, oee_telao.ritmodia,
+	oee_telao.ritmometa, oee_telao.TempoParado,oee_telao.metaoee, motparada.descricao, oee_telao.inicioparada, oee_telao.ritmominuto 
+	FROM oee_telao INNER JOIN motparada ON oee_telao.id_equipamento = motparada.idmotparada ORDER BY oee_telao.id_equipamento`, (err, res) => {
 	  if (err) {
 		 console.log("error: ", err);
 		 result(null, err);

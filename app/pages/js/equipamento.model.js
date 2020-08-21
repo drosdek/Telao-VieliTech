@@ -1,5 +1,6 @@
 const Equipamento = function (equipamento) {
 	this.equipamento = equipamento.equipamento;
+	this.idequipamento = equipamento.id_equipamento;
 	this.horaatual = equipamento.horaatual;
 	this.producao = equipamento.producao;
 	this.ritmominuto = equipamento.ritmominuto;

@@ -16,7 +16,7 @@ exports.findAll = (req, res) => {
 
 // Find a single Equipamento with a equipamentoId
 exports.findOne = (req, res) => {
-	Equipamento.findByID(req.params.equipamentoId, (err, data) => {
+	Equipamento.findById(req.params.equipamentoId, (err, data) => {
 		if (err) {
 			if (err.kind === "not_found") {
 			res.status(404).send({
