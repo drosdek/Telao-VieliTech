@@ -13,10 +13,16 @@
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="css/bootstrap-grid.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="css/bootstrap-reboot.min.css" media="screen" />
+
+	<!-- Style CSS -->
 	<link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />
+
+	<!-- Favicon -->
+	<link rel="icon" type="image/svg" href="../assets/img/logo/vieli.svg" />
 
 	<!-- JS -->
 	<script src="js/jquery-3.5.1.min.js"></script>
+	<script src="js/bootstrap.js"></script>
 	<script src="../config.js"></script>
 	<script src="js/equipamento.repository.js"></script>
 	<script src="js/equipamento.model.js"></script>
@@ -24,7 +30,7 @@
 </head>
 
 <body>
-
+	
 	<div class="container">
 		<header>
 
@@ -45,37 +51,38 @@
 			</div>
 
 			<div class="row">
-				<div class="col">
+				<div class="col-sm-11">
 					<div class="font-weight-bolder text-sm-center">
-						<h1>Controle de Producao</h1>
+						<h1 class="font-weight-bolder">Controle de Producao</h1>
 					</div>
+				</div>
+				<div class="col-sm-1">
+					<img class="logo float-right" src="../assets/img/logo/vieli.svg">
 				</div>
 			</div>
 		</header>
 
-		<div class="table-responsive">
-			<table class="table table-bordered">
-				<thead>
-					<tr>
-						<th scope="col" class="text-sm-center">Nome Equipamento</th>
-						<th scope="col" class="text-sm-center">Producao</th>
-						<th scope="col" class="text-sm-center">% Meta</th>
-						<th scope="col" class="text-sm-center">Status</th>
-						<th scope="col" class="text-sm-center">% Disponibilidade</th>
-						<th scope="col" class="text-sm-center">% Eficiencia</th>
-						<th scope="col" class="text-sm-center">% Qualidade</th>
-						<th scope="col" class="text-sm-center">% OEE</th>
-						<th scope="col" class="text-sm-center"><button type="button" class="btn btn-default btn-lg">
-							<span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
-						  </button></th>
-					</tr>
-				</thead>
-				<tbody id="lista-relatorio">
-					<tr>
-					</tr>
-				</tbody>
-			</table>
-		</div>
+		<section>
+			<table class="table table-bordered table-responsive-sm table-responsive-md table-responsive-lg table-responsive-xl table-hover">
+				<caption>Relatorio de Equipamentos</caption>
+					<thead>
+							<tr class="bg-info font-weight-bolder">
+								<th scope="col" class="text-sm-center">Maquina</th>
+								<th scope="col" class="text-sm-center">Producao</th>
+								<th scope="col" class="text-sm-center">% Meta</th>
+								<th scope="col" class="text-sm-center">% OEE</th>
+								<th scope="col" class="text-sm-center">Status</th>
+								<th scope="col" class="text-sm-center">Tempo parado</th>
+								<th scope="col" class="text-sm-center">Visualizar</th>
+							</tr>
+
+					</thead>
+					<tbody id="lista-relatorio">
+						<tr>
+						</tr>
+					</tbody>
+				</table>
+		</section>
 	</div>
 </body>
 </html>
