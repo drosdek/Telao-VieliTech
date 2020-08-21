@@ -181,14 +181,14 @@ const alimentaDoc = (equipamento) => {
 		$('#oee').html(Math.round(equipamento.metaoee).toFixed(1) + " %");
 		$('#motivoparada').html(equipamento.descricao);
 
-		//IF Baseado na % Meta ou %OEE
+		//IF Baseado na % Meta
 		if (Config.pctmeta == true) {
-			if (equipamento.pctmeta < Config.valores.vermelho) {
+			if (equipamento.pctmeta < Config.alertameta.vermelho) {
 				$(".alertaMeta").css({
 					backgroundColor: "red",
 					color: "white"
 				});
-			} else if (equipamento.pctmeta < Config.valores.amarelo) {
+			} else if (equipamento.pctmeta < Config.alertameta.amarelo) {
 				$(".alertaMeta").css({
 					backgroundColor: "yellow",
 					color: "black"
@@ -199,13 +199,14 @@ const alimentaDoc = (equipamento) => {
 					color: "white"
 				});
 			}
-		} else {
-			if (equipamento.metaoee < Config.valores.vermelho) {
+		} 
+		if (Config.pctoee == true) {
+			if (equipamento.metaoee < Config.alertaoee.vermelho) {
 				$(".alertaOee").css({
 					backgroundColor: "red",
 					color: "white"
 				});
-			} else if (equipamento.metaoee < Config.valores.amarelo) {
+			} else if (equipamento.metaoee < Config.alertaoee.amarelo) {
 				$(".alertaOee").css({
 					backgroundColor: "yellow",
 					color: "black"
@@ -354,7 +355,7 @@ const reqEven = async() => {
 		$('#erro').modal('show');
 	});
 	setTimeout(reqEven, Config.tempodetransicao);
-	}
+} 
 
 $(document).ready(() => {
 	reqEven();
