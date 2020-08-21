@@ -13,10 +13,16 @@ const Config = {
 
 	 /**
 	  * Aqui e definido se deseja criar o alerta baseado pela % META ou OEE
-	  * Para que funcione corretamente apenas uma das duas opcoes pode receber TRUE
 	  */
-	pctmeta: true,// Marque como false caso trabalhado com Meta OEE
-	valores: { // Valores para alertas
+	pctmeta: true,// Selecione TRUE para ativar FALSE para desativar
+	alertameta: { // Valores para alertas
+		vermelho: 45.0, // Valores abaixo de
+		amarelo: 65.0, // Valores acima do anterior e abaixo de
+		verde: 100.0, // Valores abaixo de
+	},
+
+	pctoee: true,// Marque como false caso trabalhado com Meta OEE
+	alertaoee: { // Valores para alertas
 		vermelho: 45.0, // Valores abaixo de
 		amarelo: 65.0, // Valores acima do anterior e abaixo de
 		verde: 100.0, // Valores abaixo de
@@ -60,10 +66,10 @@ const Config = {
 		vermelho: 100.0, // Valores acima de
 	},
 	//Selecione o tempo de transicao entre equipamentos, cada segundo = 1000
-	tempodetransicao: 5000,
+	tempodetransicao: 3000,
 	/**
-	 * Defina a URL para conexao
+	 * Defina a URL para conexao com API
 	 */
-	conecta_url: "http://localhost:8081",
+	conecta_url: "http://192.168.0.136:8081",
 
 }
