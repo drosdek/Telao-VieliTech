@@ -1,23 +1,23 @@
 /* Large devices (laptops/desktops, 768px and up) */
 @media only screen and (min-width: 768px) {
 	.sub-title {
-		font-size: 3pc !important;
+		font-size: 2pc !important;
 	}
 
 	.tamanho-font {
-		font-size: 4.77pc !important;
+		font-size: 3.42pc !important;
 	}
 
 	.font-producao {
-		font-size: 20pc !important;
+		font-size: 15pc !important;
 	}
 
 	.font-meta {
-		font-size: 8pc !important;
+		font-size: 6pc !important;
 	}
 
 	.font-indicadores {
-		font-size: 6pc !important;
+		font-size: 5pc !important;
 	}
 
 	.font-title {
@@ -25,7 +25,7 @@
 	}
 
 	.font-status {
-		font-size: 4pc !important;
+		font-size: 2pc !important;
 	}
 
 	.font-um-producao {
@@ -33,7 +33,7 @@
 	}
 
 	.cronometro {
-		font-size: 16pc;
+		font-size: 13pc;
 		color: #000000;
 		display: inline-block;
 	}
@@ -41,7 +41,7 @@
 	.logo {
 		display: flex;
 		align-items: center;
-		height: 7pc;
+		height: 5pc;
 		margin: 0.25rem;
 	}
 }
