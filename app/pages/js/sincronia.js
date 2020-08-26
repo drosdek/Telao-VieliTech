@@ -327,6 +327,8 @@ const eqp = {
 	size: 0,
 	index: 0,
 	dP: new Date(),
+	id: null,
+	grupo: null,
 };
 
 const cron = () => {
@@ -341,8 +343,22 @@ const horaAtual = () => {
 	setTimeout(horaAtual, 1000);
 }
 
+const leUrl = () => {
+	const urlParams = new URLSearchParams(window.location.search);
+
+	if (urlParams.get('id_equipamento') != null) {
+		eqp.id = urlParams.get('id_equipamento')
+	} else if (urlParams.get('vgGrupoMaquina') != null) {
+		eqp.grupo = urlParams.get('vgGrupoMaquina')
+	}
+
+	console.log(urlParams.get('id_equipamento'))
+	console.log(urlParams.get('vgGrupoMaquina'))
+}
+
 const reqEven = async() => {
-	request().then(async() => {
+	const paramns = eqp.id || (eqp.grupo ? '/group/' + eqp.grupo : '');
+	request(paramns).then(async() => {
 		eqp.size = equipamentos.length;
 		alimentaDoc(equipamentos[eqp.index]);
 		eqp.index = eqp.index === (eqp.size - 1) ? 0 : eqp.index += 1;
@@ -355,9 +371,10 @@ const reqEven = async() => {
 		$('#erro').modal('show');
 	});
 	setTimeout(reqEven, Config.tempodetransicao);
-} 
+}
 
 $(document).ready(() => {
+	leUrl();
 	reqEven();
 	cron();
 	horaAtual();
