@@ -6,7 +6,7 @@ module.exports = (app) => {
 	app.get("/equipamentos", equipamento.findAll);
 
 	// Retrieve a single Equipament with equipamentoId
-	app.get("/equipamentos/:equipamentoId", equipamento.findOne);
+	app.get("/equipamentos/single/:equipamentoId", equipamento.findOne);
 
 	// Retrieve a group Equipament
 	app.get("/equipamentos/group/:groupId", equipamento.findGroup);
