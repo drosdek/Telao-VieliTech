@@ -22,3 +22,33 @@
 			});
 		});
 	</script>
+
+
+
+
+		if (relatorio[t].disponibilidade < Config.disponibilidade.vermelho) {
+			alDip = 'vermelho';
+		} else if (relatorio[t].disponibilidade < Config.disponibilidade.amarelo) {
+			alDip = 'amarelo';
+		} else {
+			alDip = 'verde'
+		}
+
+		if (relatorio[t].performance < Config.performance.vermelho) {
+			alPerf = 'vermelho';
+		} else if (relatorio[t].performance < Config.performance.amarelo) {
+			alPerf = 'amarelo';
+		} else {
+			alPerf = 'verde'
+		}
+
+		if (relatorio[t].performance < Config.performance.vermelho) {
+			alQual = 'vermelho';
+		} else if (relatorio[t].performance < Config.performance.amarelo) {
+			alQual = 'amarelo';
+		} else {
+			alQual = 'verde'
+		}
+		// <td class="text-sm-center align-middle ${alDip}">${Math.round(relatorio[t].disponibilidade).toFixed(1) + " %"}</td>
+		// <td class="text-sm-center align-middle ${alPerf}">${Math.round(relatorio[t].performance).toFixed(1) + " %"}</td>
+		// <td class="text-sm-center align-middle ${alQual}">${Math.round(relatorio[t].qualidade).toFixed(1) + " %"}</td>

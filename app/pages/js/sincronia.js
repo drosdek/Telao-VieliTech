@@ -346,18 +346,18 @@ const horaAtual = () => {
 const leUrl = () => {
 	const urlParams = new URLSearchParams(window.location.search);
 
-	if (urlParams.get('id_equipamento') != null) {
-		eqp.id = urlParams.get('id_equipamento')
+	if (urlParams.get('idMaquina') != null) {
+		eqp.id = urlParams.get('idMaquina')
 	} else if (urlParams.get('vgGrupoMaquina') != null) {
 		eqp.grupo = urlParams.get('vgGrupoMaquina')
 	}
 
-	console.log(urlParams.get('id_equipamento'))
-	console.log(urlParams.get('vgGrupoMaquina'))
+	urlParams.get('idMaquina')
+	urlParams.get('vgGrupoMaquina')
 }
 
 const reqEven = async() => {
-	const paramns = eqp.id || (eqp.grupo ? '/group/' + eqp.grupo : '');
+	const paramns = (eqp.id ? '/single/' + eqp.id : '') || (eqp.grupo ? '/group/' + eqp.grupo : '');
 	request(paramns).then(async() => {
 		eqp.size = equipamentos.length;
 		alimentaDoc(equipamentos[eqp.index]);
