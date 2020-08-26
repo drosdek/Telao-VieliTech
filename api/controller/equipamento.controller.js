@@ -30,3 +30,20 @@ exports.findOne = (req, res) => {
 		} else res.send(data);
 	});
 };
+
+// Find a group Equipamento with a groupId
+exports.findGroup = (req, res) => {
+	Equipamento.findByGroup(req.params.groupId, (err, data) => {
+		if (err) {
+			if (err.kind === "not_found") {
+			res.status(404).send({
+				message: `Not found Equipament with id ${req.params.groupId}.`
+			});
+			} else {
+			res.status(500).send({
+				message: "Error retrieving Equipament with id " + req.params.groupId
+			});
+			}
+		} else res.send(data);
+	});
+};

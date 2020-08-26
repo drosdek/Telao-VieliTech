@@ -8,4 +8,7 @@ module.exports = (app) => {
 	// Retrieve a single Equipament with equipamentoId
 	app.get("/equipamentos/:equipamentoId", equipamento.findOne);
 
+	// Retrieve a group Equipament
+	app.get("/equipamentos/group/:groupId", equipamento.findGroup);
+
 }
