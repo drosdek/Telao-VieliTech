@@ -177,7 +177,7 @@ const alimentaDoc = (equipamento) => {
 		$('#unidade').html(equipamento.unidade);
 		$('#unidades').html(equipamento.unidade);
 		$('#labelparada').html(equipamento.labelparada);
-		$('#inicioparada').html(new Date(equipamento.inicioparada).toLocaleString());
+		$('#inicioparada').html(new Date(equipamento.inicioparada).toLocaleString('pt-br'));
 		$('#oee').html(Math.round(equipamento.metaoee).toFixed(1) + " %");
 		$('#motivoparada').html(equipamento.descricao);
 
@@ -331,13 +331,13 @@ const eqp = {
 
 const cron = () => {
 	const dif = new Date(Math.abs(new Date().getTime() - eqp.dP.getTime()));
-	$('#TempoParado').html(`${dif.getDate()} Dias - ${dif.toLocaleTimeString()}`);
+	$('#TempoParado').html(`${dif.getDate()} Dias - ${dif.toLocaleTimeString('pt-br')}`);
 	setTimeout(cron, 1000);
 }
 
 const horaAtual = () => {
 	const horaatual = new Date();
-	$('#horaatual').html(`${horaatual.toLocaleDateString()} - ${horaatual.toLocaleTimeString()}`);
+	$('#horaatual').html(`${horaatual.toLocaleDateString('pt-br')} - ${horaatual.toLocaleTimeString('pt-br')}`);
 	setTimeout(horaAtual, 1000);
 }
 

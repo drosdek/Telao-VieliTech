@@ -65,7 +65,7 @@ const alimentaRel = (relatorio) => {
 }
 
 const teste = (x) => {
-	capturaEquipamentoId(x)
+	requestById(x)
 	console.log(geraTela(equipamentoId))
 	
 }
@@ -73,151 +73,275 @@ const teste = (x) => {
 const geraTela = (testera) => {
 
 	for (t in testera){
-		$('#teste').html(`
+		if (testera[t].inicioparada && testera[t].inicioparada !== 'null') {
+			eqp.dP = new Date(testera[t].inicioparada);
+
+			$('#teste').html(`
 			<body>
 
-			<div class="container">
-				
-				<header id="lista-header">
-					<div class="row">
-						<div class="col-lg-12 col-md-12 col-sm-12 borda">
-							<div style='background-color: green;' class="card color-text margem font-vieli">
-								<div class="card-body">
-									<div class="float-sm-left font-title font-weight-bolder text-sm-center" id="equipamento">
-										NOME EQUIPAMENTO
-									</div>
-									<div class="float-sm-right font-title font-weight-bolder text-sm-center" id="horaatual">
-										HORA ATUAL
+				<div style="color: black;" class="container">
+					<header>
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-sm-12 borda">
+								<div style='background-color: orange;' class="card margem font-vieli">
+									<div class="card-body">
+										<div class="float-sm-left font-title font-weight-bolder text-sm-center" id="equipamento" >
+											Nome Equipamento
+										</div>
+										<div class="float-sm-right font-title font-weight-bolder text-sm-center" id="horaatual">
+											Hora Atual
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-				</header>
+					</header>
 
-				<div class="modal fade" id="erro" tabindex="-1">
-					<div class="modal-dialog modal-dialog-centered modal-xl" role="dialog">
-						<div class="modal-content">
-							<div style="background-color: orange; color: white;"  class="modal-header">
-								<h5 class="modal-title font-weight-bolder font-title">Atencao!</h5>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
+					<section>
+						<div class="row">
+							<div class="col-lg-6 col-md-6 col-sm-6 borda">
+								<div style='background-color: orange;' class="card margem font-vieli">
+									<div class="card-body borda alinha-text justify-content-center">
+										<div class="font-status"><b>PARADA DESDE: </b></div> 
+										<div class="font-status" id="inicioparada">
+											Parada Desde
+										</div>
+									</div>
+								</div>
 							</div>
-							<div class="modal-body font-indicadores text-sm-center">
-								Nao foi encontrado nenhum equipamento conectado, ou servidor esta fora!
+							<div class="col-lg-6 col-md-6 col-sm-6 borda">
+								<div style='background-color: orange;' class="card margem font-vieli">
+									<div class="card-body borda alinha-text justify-content-center font-status font-weight-bolder" id="motivoparada">
+										Motivo Parada
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-sm-12 borda">
+								<div style='background-color: orange;' class="card margem font-vieli">
+									<div class="card-body borda alinha-text justify-content-center">
+										<div id="TempoParado" class="font-weight-bolder cronometro"> 00:00:00 </div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-lg-4 col-md-4 col-sm-4 borda">
+								<div style='background-color: orange;' class="card margem font-vieli">
+									<div class="card-header text-sm-center font-weight-bolder sub-title">PRODUZIDO</div>
+									<div class="card-body text-sm-center font-meta font-weight-bolder" id="producao">
+										Produzido
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-4 col-md-4 col-sm-4 borda">
+								<div style='background-color: orange;' class="card margem font-vieli">
+									<div class="card-header text-sm-center font-weight-bolder sub-title">% META</div>
+									<div class="card-body text-sm-center font-meta font-weight-bolder	" id="pctmeta">
+										% Meta
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-4 col-md-4 col-sm-4 borda">
+								<div style='background-color: orange;' class="card margem font-vieli">
+									<div class="card-header text-sm-center font-weight-bolder sub-title">RETRABALHO</div>
+									<div class="card-body text-sm-center font-meta font-weight-bolder" id="retrabalho">
+										10 %
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+
+
+					<footer>
+						<div class="row">
+							<div class="col-lg-3 col-md-3 col-sm-3 borda">
+								<div style='background-color: orange;' class="card margem font-vieli">
+									<div class="card-header text-sm-center font-weight-bolder sub-title">Disponibilidade</div>
+									<div class="card-body text-sm-center font-indicadores font-weight-bolder" id="disponibilidade">Disponibilidade</div>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-3 col-sm-3 borda">
+								<div style='background-color: orange;' class="card margem font-vieli">
+									<div class="card-header text-sm-center font-weight-bolder sub-title">Performance</div>
+									<div class="card-body text-sm-center font-indicadores font-weight-bolder" id="performance">Performance %</div>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-3 col-sm-3 borda">
+								<div style='background-color: orange;' class="card margem font-vieli">
+									<div class="card-header text-sm-center font-weight-bolder sub-title">Qualidade</div>
+									<div class="card-body text-sm-center font-indicadores font-weight-bolder" id="qualidade">Qualidade %</div>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-3 col-sm-3 borda">
+								<div style='background-color: orange;' class="card margem font-vieli">
+									<div class="card-header text-sm-center font-weight-bolder sub-title">OEE</div>
+									<div class="card-body text-sm-center font-indicadores font-weight-bolder" id="oee">OEE %</div>
+								</div>
+							</div>
+						</div>
+						<div class="float-sm-right">
+							<img class="logo" src="../assets/img/logo/vieli.svg" alt="Logo" title="Vieli Tech">
+						</div>
+						</div>
+					</footer>
+				</div>
+			`)
+
+		} else {
+			$('#teste').html(`
+				<body>
+	
+				<div class="container">
+					
+					<header id="lista-header">
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-sm-12 borda">
+								<div style='background-color: green;' class="card color-text margem font-vieli">
+									<div class="card-body">
+										<div class="float-sm-left font-title font-weight-bolder text-sm-center" id="equipamento">
+											NOME EQUIPAMENTO
+										</div>
+										<div class="float-sm-right font-title font-weight-bolder text-sm-center" id="horaatual">
+											HORA ATUAL
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</header>
+	
+					<div class="modal fade" id="erro" tabindex="-1">
+						<div class="modal-dialog modal-dialog-centered modal-xl" role="dialog">
+							<div class="modal-content">
+								<div style="background-color: orange; color: white;"  class="modal-header">
+									<h5 class="modal-title font-weight-bolder font-title">Atencao!</h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body font-indicadores text-sm-center">
+									Nao foi encontrado nenhum equipamento conectado, ou servidor esta fora!
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-
-				<section id="linha-producao">
-					<div class="row align-items-end">
-						<div class="col-lg-9 col-md-9 col-sm-9 borda">
-							<div style='background-color: green;' class="card color-text font-weight-bolder margem font-vieli">
-								<div class="card-body borda alinha-text justify-content-center">
-									<div class="col-lg-10 col-md-10 col-sm-10 font-producao" id="producao">
+	
+					<section id="linha-producao">
+						<div class="row align-items-end">
+							<div class="col-lg-9 col-md-9 col-sm-9 borda">
+								<div style='background-color: green;' class="card color-text font-weight-bolder margem font-vieli">
+									<div class="card-body borda alinha-text justify-content-center">
+										<div class="col-lg-10 col-md-10 col-sm-10 font-producao" id="producao">
+											0
+										</div>
+										<div class="col-lg-2 col-md-2 col-sm-2 display-4" id="unidade">
+											UM
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-3 col-sm-3 borda">
+								<div style='background-color: green;' class="card color-text margem font-vieli">
+									<div class="card-header text-sm-center font-weight-bolder sub-title">RITMO - <div id="unidades">
+											UM</div>
+									</div>
+									<div class="card-body tamanho-font">
+										<div class="row">
+											<div class="col-sm-5 borda">Atual:</div>
+											<div class="col-sm-6 text-sm-right borda font-weight-bolder" id="ritmominuto">0</div>
+										</div>
+										<div class="row">
+											<div class="col-sm-5 borda">Dia:</div>
+											<div class="col-sm-6 text-sm-right borda font-weight-bolder" id="ritmodia">0</div>
+										</div>
+										<div class="row">
+											<div class="col-sm-5 borda">Meta:</div>
+											<div class="col-sm-6 text-sm-right borda font-weight-bolder" id="ritmometa">0</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+	
+						<div class="row">
+							<div class="col-lg-5 col-md-5 col-sm-5 borda">
+								<div style='background-color: green;' class="card margem color-text font-vieli">
+									<div class="card-header text-sm-center font-weight-bolder sub-title">META</div>
+									<div class="card-body text-sm-center font-meta font-weight-bolder" id="metaatual">
 										0
 									</div>
-									<div class="col-lg-2 col-md-2 col-sm-2 display-4" id="unidade">
-										UM
+								</div>
+							</div>
+							<div class="col-lg-4 col-md-4 col-sm-4 borda">
+								<div style='background-color: green;' class="card margem color-text font-vieli">
+									<div class="card-header text-sm-center font-weight-bolder sub-title">% META</div>
+									<div class="card-body text-sm-center font-meta font-weight-bolder" id="pctmeta">
+										0 %
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-3 col-sm-3 borda">
+								<div style='background-color: green;' class="card margem color-text font-vieli">
+									<div class="card-header text-sm-center font-weight-bolder sub-title">RETRABALHO</div>
+									<div class="card-body text-sm-center font-meta font-weight-bolder" id="pctretrabalho">
+										0 %
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="col-lg-3 col-md-3 col-sm-3 borda">
-							<div style='background-color: green;' class="card color-text margem font-vieli">
-								<div class="card-header text-sm-center font-weight-bolder sub-title">RITMO - <div id="unidade">
-										UM</div>
+					</section>
+	
+					<footer>
+						<div class="row">
+							<div class="col-lg-3 col-md-3 col-sm-3 borda">
+								<div style='background-color: green;' class="card margem color-text font-vieli alertaDisponibilidade">
+									<div class="card-header text-sm-center font-weight-bolder sub-title">Disponibilidade</div>
+									<div class="card-body text-sm-center font-indicadores font-weight-bolder" id="disponibilidade">
+										0 %
+									</div>
 								</div>
-								<div class="card-body tamanho-font">
-									<div class="row">
-										<div class="col-sm-5 borda">Atual:</div>
-										<div class="col-sm-6 text-sm-right borda font-weight-bolder" id="ritmominuto">0</div>
+							</div>
+							<div class="col-lg-3 col-md-3 col-sm-3 borda">
+								<div style='background-color: green;' class="card margem color-text font-vieli alertaPerformance">
+									<div class="card-header text-sm-center font-weight-bolder sub-title">Performance</div>
+									<div class="card-body text-sm-center font-indicadores font-weight-bolder" id="performance">
+										0 %
 									</div>
-									<div class="row">
-										<div class="col-sm-5 borda">Dia:</div>
-										<div class="col-sm-6 text-sm-right borda font-weight-bolder" id="ritmodia">0</div>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-3 col-sm-3 borda">
+								<div style='background-color: green;' class="card margem color-text font-vieli alertaQualidade">
+									<div class="card-header text-sm-center font-weight-bolder sub-title">Qualidade</div>
+									<div class="card-body text-sm-center font-indicadores font-weight-bolder " id="qualidade">
+										0 %
 									</div>
-									<div class="row">
-										<div class="col-sm-5 borda">Meta:</div>
-										<div class="col-sm-6 text-sm-right borda font-weight-bolder" id="ritmometa">0</div>
+								</div>
+							</div>
+							<div class="col-lg-3 col-md-3 col-sm-3 borda">
+								<div style='background-color: green;' class="card margem color-text font-vieli alertaOee alertaPctOee">
+									<div class="card-header text-sm-center font-weight-bolder sub-title">OEE</div>
+									<div class="card-body text-sm-center font-indicadores font-weight-bolder" id="oee">
+										0 %
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
+						<div class="float-sm-right">
+							<img class="logo" src="../assets/img/logo/vieli.svg" alt="Logo" title="Vieli Tech">
+						</div>
+					</footer>
+				</div>
+				</body>
+			`)
 
-					<div class="row">
-						<div class="col-lg-5 col-md-5 col-sm-5 borda">
-							<div style='background-color: green;' class="card margem color-text font-vieli">
-								<div class="card-header text-sm-center font-weight-bolder sub-title">META</div>
-								<div class="card-body text-sm-center font-meta font-weight-bolder" id="metaatual">
-									0
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-4 borda">
-							<div style='background-color: green;' class="card margem color-text font-vieli">
-								<div class="card-header text-sm-center font-weight-bolder sub-title">% META</div>
-								<div class="card-body text-sm-center font-meta font-weight-bolder" id="pctmeta">
-									0 %
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-3 col-sm-3 borda">
-							<div style='background-color: green;' class="card margem color-text font-vieli">
-								<div class="card-header text-sm-center font-weight-bolder sub-title">RETRABALHO</div>
-								<div class="card-body text-sm-center font-meta font-weight-bolder" id="pctretrabalho">
-									0 %
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
+		}
 
-				<footer>
-					<div class="row">
-						<div class="col-lg-3 col-md-3 col-sm-3 borda">
-							<div style='background-color: green;' class="card margem color-text font-vieli alertaDisponibilidade">
-								<div class="card-header text-sm-center font-weight-bolder sub-title">Disponibilidade</div>
-								<div class="card-body text-sm-center font-indicadores font-weight-bolder" id="disponibilidade">
-									0 %
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-3 col-sm-3 borda">
-							<div style='background-color: green;' class="card margem color-text font-vieli alertaPerformance">
-								<div class="card-header text-sm-center font-weight-bolder sub-title">Performance</div>
-								<div class="card-body text-sm-center font-indicadores font-weight-bolder" id="performance">
-									0 %
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-3 col-sm-3 borda">
-							<div style='background-color: green;' class="card margem color-text font-vieli alertaQualidade">
-								<div class="card-header text-sm-center font-weight-bolder sub-title">Qualidade</div>
-								<div class="card-body text-sm-center font-indicadores font-weight-bolder " id="qualidade">
-									0 %
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-3 col-sm-3 borda">
-							<div style='background-color: green;' class="card margem color-text font-vieli alertaOee alertaPctOee">
-								<div class="card-header text-sm-center font-weight-bolder sub-title">OEE</div>
-								<div class="card-body text-sm-center font-indicadores font-weight-bolder" id="oee">
-									0 %
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="float-sm-right">
-						<img class="logo" src="../assets/img/logo/vieli.svg" alt="Logo" title="Vieli Tech">
-					</div>
-				</footer>
-			</div>
-			</body>
-		`)
+
 		$('#equipamento').html(testera[t].equipamento);
 		$('#producao').html(Math.round(testera[t].producao).toFixed(1));
 		$('#ritmominuto').html(Math.round(testera[t].ritmominuto).toFixed(1));
@@ -225,7 +349,7 @@ const geraTela = (testera) => {
 		$('#ritmometa').html(Math.round(testera[t].ritmometa).toFixed(1));
 		$('#metaatual').html(Math.round(testera[t].metaatual).toFixed(1));
 		$('#pctmeta').html(Math.round(testera[t].pctmeta).toFixed(1) + " %");
-		$('#retrabalho').html(Math.round(testera[t].retrabalho).toFixed(1) + " %");
+		$('#pctretrabalho').html(Math.round(testera[t].retrabalho).toFixed(1) + " %");
 		$('#disponibilidade').html(Math.round(testera[t].disponibilidade).toFixed(1) + " %");
 		$('#performance').html(Math.round(testera[t].performance).toFixed(1) + " %");
 		$('#qualidade').html(Math.round(testera[t].qualidade).toFixed(1) + " %");
@@ -235,7 +359,144 @@ const geraTela = (testera) => {
 		$('#inicioparada').html(new Date(testera[t].inicioparada).toLocaleString());
 		$('#oee').html(Math.round(testera[t].metaoee).toFixed(1) + " %");
 		$('#motivoparada').html(testera[t].descricao);
-
+		
+				//IF Baseado na % Meta
+				if (Config.pctmeta == true) {
+					if (testera[t].pctmeta < Config.alertameta.vermelho) {
+						$(".alertaMeta").css({
+							backgroundColor: "red",
+							color: "white"
+						});
+					} else if (testera[t].pctmeta < Config.alertameta.amarelo) {
+						$(".alertaMeta").css({
+							backgroundColor: "yellow",
+							color: "black"
+						});
+					} else {
+						$(".alertaMeta").css({
+							backgroundColor: "green",
+							color: "white"
+						});
+					}
+				} 
+				if (Config.pctoee == true) {
+					if (testera.metaoee < Config.alertaoee.vermelho) {
+						$(".alertaOee").css({
+							backgroundColor: "red",
+							color: "white"
+						});
+					} else if (testera.metaoee < Config.alertaoee.amarelo) {
+						$(".alertaOee").css({
+							backgroundColor: "yellow",
+							color: "black"
+						});
+					} else {
+						$(".alertaOee").css({
+							backgroundColor: "green",
+							color: "white"
+						});
+					}
+				}
+		
+				// IF baseado no Retrabalho
+				if (Config.pctretrabalho == true) {
+					if (testera[t].retrabalho <= Config.retrabalho.verde) {
+						$(".alertaRetrabalho").css({
+							backgroundColor: "green",
+							color: "white"
+						});
+					} else if (testera[t].retrabalho >= Config.retrabalho.vermelho) {
+						$(".alertaRetrabalho").css({
+							backgroundColor: "red",
+							color: "white"
+						});
+					} else if (testera[t].retrabalho >= Config.retrabalho.amarelo) {
+						$(".alertaRetrabalho").css({
+							backgroundColor: "yellow",
+							color: "black"
+						});
+					}
+				}
+		
+				// IF baseado na Disponibilidade
+				if (Config.pctdisponibilidade == true) {
+					if (testera.disponibilidade < Config.disponibilidade.vermelho) {
+						$(".alertaDisponibilidade").css({
+							backgroundColor: "red",
+							color: "white"
+						});
+					} else if (testera.disponibilidade < Config.disponibilidade.amarelo) {
+						$(".alertaDisponibilidade").css({
+							backgroundColor: "yellow",
+							color: "black"
+						});
+					} else {
+						$(".alertaDisponibilidade").css({
+							backgroundColor: "green",
+							color: "white"
+						});
+					}
+				}
+		
+				// IF baseado na Performance
+				if (Config.pctperformance == true) {
+					if (testera.performance < Config.performance.vermelho) {
+						$(".alertaPerformance").css({
+							backgroundColor: "red",
+							color: "white"
+						});
+					} else if (testera.performance < Config.performance.amarelo) {
+						$(".alertaPerformance").css({
+							backgroundColor: "yellow",
+							color: "black"
+						});
+					} else {
+						$(".alertaPerformance").css({
+							backgroundColor: "green",
+							color: "white"
+						});
+					}
+				}
+		
+				// IF baseado na Qualidade
+				if (Config.pctqualidade == true) {
+					if (testera.qualidade < Config.qualidade.vermelho) {
+						$(".alertaQualidade").css({
+							backgroundColor: "red",
+							color: "white"
+						});
+					} else if (testera.qualidade < Config.qualidade.amarelo) {
+						$(".alertaQualidade").css({
+							backgroundColor: "yellow",
+							color: "black"
+						});
+					} else {
+						$(".alertaQualidade").css({
+							backgroundColor: "green",
+							color: "white"
+						});
+					}
+				}
+		
+				// IF baseado na OEE
+				if (Config.pctoee == true) {
+					if (testera.oee < Config.oee.vermelho) {
+						$(".alertaPctOee").css({
+							backgroundColor: "red",
+							color: "white"
+						});
+					} else if (testera.oee < Config.oee.amarelo) {
+						$(".alertaPctOee").css({
+							backgroundColor: "yellow",
+							color: "black"
+						});
+					} else {
+						$(".alertaPctOee").css({
+							backgroundColor: "green",
+							color: "white"
+						});
+					}
+				}
 	}
 }	
 
@@ -247,7 +508,17 @@ const eqp = {
 	dP: new Date(),
 };
 
+const cron = () => {
+	const dif = new Date(Math.abs(new Date().getTime() - eqp.dP.getTime()));
+	$('#TempoParado').html(`${dif.getDate()} Dias - ${dif.toLocaleTimeString()}`);
+	setTimeout(cron, 1000);
+}
 
+const horaAtual = () => {
+	const horaatual = new Date();
+	$('#horaatual').html(`${horaatual.toLocaleDateString()} - ${horaatual.toLocaleTimeString()}`);
+	setTimeout(horaAtual, 1000);
+}
 
 const reqEventRel = async() => {
 	request().then(async() => {
@@ -265,4 +536,6 @@ const reqEventRel = async() => {
 
 $(document).ready(() => {
 	reqEventRel();
+	cron()
+	horaAtual()
 });
