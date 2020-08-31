@@ -82,7 +82,7 @@ const alimentaDoc = (equipamento) => {
 			$('#lista-header').html(`
 				<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12 borda font-title ">
-					<div style='background-color: green;' class="card color-text margem font-vieli">
+					<div style='background-color: green;' class="card color-text margem font-vieli alertaMeta">
 						<div class="card-body">
 							<div class="float-sm-left font-weight-bolder text-sm-center" id="equipamento">
 								NOME EQUIPAMENTO
@@ -98,7 +98,7 @@ const alimentaDoc = (equipamento) => {
 			$('#linha-producao').html(`
 				<div class="row">
 					<div class="col-lg-9 col-md-9 col-sm-9 borda">
-						<div style="background-color: green;" class="card color-text font-weight-bolder margem font-vieli">
+						<div style="background-color: green;" class="card color-text font-weight-bolder margem font-vieli alertaMeta">
 							<div class="card-body borda alinha-text justify-content-center">
 								<div class="col-lg-8 col-md-8 col-sm-8 font-producao" id="producao">
 									2000
@@ -110,7 +110,7 @@ const alimentaDoc = (equipamento) => {
 						</div>
 					</div>
 					<div class="col-lg-3 col-md-3 col-sm-3 borda">
-						<div style="background-color: green;" class="card color-text margem font-vieli">
+						<div style="background-color: green;" class="card color-text margem font-vieli alertaMeta">
 							<div class="card-header font-weight-bolder sub-title">
 								<div class="row justify-content-center">
 									<div class="float-sm-left">RITMO - <div class="float-sm-right" id="unidades">PC/min</div>
@@ -136,7 +136,7 @@ const alimentaDoc = (equipamento) => {
 				</div>
 			<div class="row">
 				<div class="col-lg-5 col-md-5 col-sm-5 borda">
-					<div style="background-color: green;" class="card margem color-text font-vieli">
+					<div style="background-color: green;" class="card margem color-text font-vieli alertaMeta">
 						<div class="card-header text-sm-center font-weight-bolder sub-title">META</div>
 							<div class="card-body text-sm-center font-meta font-weight-bolder" id="metaatual">
 								1000
@@ -164,21 +164,21 @@ const alimentaDoc = (equipamento) => {
 		}
 
 		$('#equipamento').html(equipamento.equipamento);
-		$('#producao').html(Math.round(equipamento.producao).toFixed(1));
-		$('#ritmominuto').html(Math.round(equipamento.ritmominuto).toFixed(1));
-		$('#ritmodia').html(Math.round(equipamento.ritmodia).toFixed(1));
-		$('#ritmometa').html(Math.round(equipamento.ritmometa).toFixed(1));
-		$('#metaatual').html(Math.round(equipamento.metaatual).toFixed(1));
-		$('#pctmeta').html(Math.round(equipamento.pctmeta).toFixed(1) + " %");
-		$('#retrabalho').html(Math.round(equipamento.retrabalho).toFixed(1) + " %");
-		$('#disponibilidade').html(Math.round(equipamento.disponibilidade).toFixed(1) + " %");
-		$('#performance').html(Math.round(equipamento.performance).toFixed(1) + " %");
-		$('#qualidade').html(Math.round(equipamento.qualidade).toFixed(1) + " %");
+		$('#producao').html(Math.abs(equipamento.producao).toFixed(1));
+		$('#ritmominuto').html(Math.abs(equipamento.ritmominuto).toFixed(1));
+		$('#ritmodia').html(Math.abs(equipamento.ritmodia).toFixed(1));
+		$('#ritmometa').html(Math.abs(equipamento.ritmometa).toFixed(1));
+		$('#metaatual').html(Math.abs(equipamento.metaatual).toFixed(1));
+		$('#pctmeta').html(Math.abs(equipamento.pctmeta).toFixed(1) + " %");
+		$('#retrabalho').html(Math.abs((equipamento.retrabalho/equipamento.producao)*100).toFixed(1) + " %");
+		$('#disponibilidade').html(Math.abs(equipamento.disponibilidade).toFixed(1) + " %");
+		$('#performance').html(Math.abs(equipamento.performance).toFixed(1) + " %");
+		$('#qualidade').html(Math.abs(equipamento.qualidade).toFixed(1) + " %");
 		$('#unidade').html(equipamento.unidade);
 		$('#unidades').html(equipamento.unidade);
 		$('#labelparada').html(equipamento.labelparada);
 		$('#inicioparada').html(new Date(equipamento.inicioparada).toLocaleString('pt-br'));
-		$('#oee').html(Math.round(equipamento.metaoee).toFixed(1) + " %");
+		$('#oee').html(Math.abs	((equipamento.disponibilidade*equipamento.performance*equipamento.qualidade)/10000).toFixed(1) + " %");
 		$('#motivoparada').html(equipamento.descricao);
 
 		//IF Baseado na % Meta
@@ -301,12 +301,13 @@ const alimentaDoc = (equipamento) => {
 
 		// IF baseado na OEE
 		if (Config.pctoee == true) {
-			if (equipamento.oee < Config.oee.vermelho) {
+			pctoee = ((equipamento.disponibilidade * equipamento.performance * equipamento.qualidade)/10000)
+			if (pctoee < Config.oee.vermelho) {
 				$(".alertaPctOee").css({
 					backgroundColor: "red",
 					color: "white"
 				});
-			} else if (equipamento.oee < Config.oee.amarelo) {
+			} else if (pctoee < Config.oee.amarelo) {
 				$(".alertaPctOee").css({
 					backgroundColor: "yellow",
 					color: "black"
@@ -332,10 +333,27 @@ const eqp = {
 };
 
 const cron = () => {
-	const dif = new Date(Math.abs(new Date().getTime() - eqp.dP.getTime()));
-	$('#TempoParado').html(`${dif.getDate()} Dias - ${dif.toLocaleTimeString('pt-br')}`);
+	const dif = new Date(new Date().getTime() - eqp.dP.getTime());
+	var milliseconds = parseInt((dif % 1000) / 100),
+	seconds = Math.floor((dif / 1000) % 60),
+	minutes = Math.floor((dif / (1000 * 60)) % 60),
+	hours = Math.floor((dif / (1000 * 60 * 60)) % 24);
+
+	hours = (hours < 10) ? "0" + hours : hours;
+	minutes = (minutes < 10) ? "0" + minutes : minutes;
+	seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+	$('#TempoParado').html(`${hours}:${minutes}:${seconds}`);
 	setTimeout(cron, 1000);
 }
+
+// const cron = () => {
+// 	const dif = new Date(new Date().getTime() - eqp.dP.getTime());
+// 	console.log(dif.getTime())
+// 	$('#TempoParado').html(`${dif.toLocaleTimeString('pt-br')}`);
+// 	setTimeout(cron, 1000);
+// }
+
 
 const horaAtual = () => {
 	const horaatual = new Date();
