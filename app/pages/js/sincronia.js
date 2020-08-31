@@ -347,14 +347,6 @@ const cron = () => {
 	setTimeout(cron, 1000);
 }
 
-// const cron = () => {
-// 	const dif = new Date(new Date().getTime() - eqp.dP.getTime());
-// 	console.log(dif.getTime())
-// 	$('#TempoParado').html(`${dif.toLocaleTimeString('pt-br')}`);
-// 	setTimeout(cron, 1000);
-// }
-
-
 const horaAtual = () => {
 	const horaatual = new Date();
 	$('#horaatual').html(`${horaatual.toLocaleDateString('pt-br')} - ${horaatual.toLocaleTimeString('pt-br')}`);
