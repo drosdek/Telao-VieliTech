@@ -1,0 +1,285 @@
+@media (min-width: 360px) {
+	.default {
+		background-color: gray;
+		color: white
+	}
+	
+	.text-vieli {
+		font-family: Arial, Helvetica, sans-serif;
+	}
+
+	.font-parada-producao {
+		font-size: 2rem;
+	}
+	
+	.font-parada-date {
+		font-size: 2rem;
+	}
+	
+	.font-cronometro {
+		font-size: 4rem;
+	}	
+	
+	.font-title-telao {
+		font-size: 1.5rem;
+	}
+
+	.font-time-telao {
+		text-align: center;
+		font-size: 1.5rem;
+	}
+	
+	.font-indicador-producao {
+		font-size: 3rem;
+	}
+	
+	.font-um-producao {
+		font-size: 2rem;
+	}
+	
+	.font-ritmo-producao {
+		font-size: 2rem;
+	}
+	
+	.font-indicadores {
+		font-size: 4rem;
+	}
+	
+	.font-header-card {
+		font-size: 2rem;
+		font-weight: 600;
+		line-height: 1.2;
+	}
+	
+	.logo {
+		height: 3rem;
+	}
+}
+@media (min-width: 576px) {
+	.default {
+		background-color: gray;
+		color: white
+	}
+
+	.font-parada-producao {
+		font-size: 1.7rem;
+	}
+	
+	.font-parada-date {
+		font-size: 1.7rem;
+	}
+	
+	.font-cronometro {
+		font-size: 7rem;
+	}
+	
+	.text-vieli {
+		font-family: Arial, Helvetica, sans-serif;
+	}
+	
+	.font-title-telao {
+		font-size: 2.5rem;
+	}
+
+	.font-time-telao {
+		font-size: 1.5rem;
+	}
+	
+	.font-indicador-producao {
+		font-size: 6rem;
+	}
+	
+	.font-um-producao {
+		font-size: 3rem;
+	}
+	
+	.font-ritmo-producao {
+		font-size: 2rem;
+	}
+	
+	.font-indicadores {
+		font-size: 7rem;
+	}
+	
+	.font-header-card {
+		font-size: 2rem;
+		font-weight: 600;
+		line-height: 1.2;
+	}
+	
+	.logo {
+		height: 3rem;
+	}
+}
+@media (min-width: 768px) {
+	.default {
+		background-color: gray;
+		color: white
+	}
+
+	.font-parada-producao {
+		font-size: 2rem;
+	}
+	
+	.font-parada-date {
+		font-size: 2rem;
+	}
+	
+	.font-cronometro {
+		font-size: 10rem;
+	}
+	
+	.text-vieli {
+		font-family: Arial, Helvetica, sans-serif;
+	}
+	
+	.font-title-telao {
+		font-size: 3rem;
+	}
+
+	.font-time-telao {
+		font-size: 2rem;
+	}
+	
+	.font-indicador-producao {
+		font-size: 9rem;
+	}
+	
+	.font-um-producao {
+		font-size: 4rem;
+	}
+	
+	.font-ritmo-producao {
+		font-size: 2rem;
+	}
+	
+	.font-indicadores {
+		font-size: 3rem;
+	}
+	
+	.font-header-card {
+		font-size: 1.5rem;
+		font-weight: 600;
+		line-height: 1.2;
+	}
+	
+	.logo {
+		height: 3rem;
+	}
+}
+@media (min-width: 992px) {
+	.default {
+		background-color: gray;
+		color: white
+	}
+
+	.font-parada-producao {
+		font-size: 2.5rem;
+	}
+	
+	.font-parada-date {
+		font-size: 2.5rem;
+	}
+	
+	.font-cronometro {
+		font-size: 14rem;
+	}
+	
+	.text-vieli {
+		font-family: Arial, Helvetica, sans-serif;
+	}
+	
+	.font-title-telao {
+		font-size: 2.5rem;
+	}
+
+	.font-time-telao {
+		font-size: 1.5rem;
+		position: relative;
+		top: 0.8rem;
+	}
+	
+	.font-indicador-producao {
+		font-size: 9rem;
+	}
+	
+	.font-um-producao {
+		font-size: 4rem;
+	}
+	
+	.font-ritmo-producao {
+		font-size: 1.35rem;
+	}
+	
+	.font-indicadores {
+		font-size: 3rem;
+	}
+	
+	.font-header-card {
+		font-size: 1.5rem;
+		font-weight: 600;
+		line-height: 1.2;
+	}
+	
+	.logo {
+		height: 3rem;
+	}
+}
+@media (min-width: 1200px) {
+	.default {
+		background-color: gray;
+		color: white
+	}
+	
+	.font-parada-producao {
+		font-size: 3rem;
+	}
+	
+	.font-parada-date {
+		font-size: 3rem;
+	}
+	
+	.font-cronometro {
+		font-size: 15rem;
+	}
+
+	.text-vieli {
+		font-family: Arial, Helvetica, sans-serif;
+	}
+	
+	.font-title-telao {
+		font-size: 3rem;
+	}
+
+	.font-time-telao {
+		font-size: 2rem;
+		position: relative;
+		top: 1rem;
+	}
+	
+	.font-indicador-producao {
+		font-size: 11rem;
+	}
+	
+	.font-um-producao {
+		font-size: 4rem;
+	}
+	
+	.font-ritmo-producao {
+		font-size: 1.8rem;
+	}
+	
+	.font-indicadores {
+		font-size: 4rem;
+	}
+	
+	.font-header-card {
+		font-size: 1.5rem;
+		font-weight: 600;
+		line-height: 1.2;
+	}
+	
+	.logo {
+		height: 3rem;
+	}
+}

@@ -1,0 +1,11 @@
+@import url(telao.mobile.css);
+@import url(telao.tv.css);
+
+.background-parada {
+	background-color: orange;
+}
+
+.text-vieli {
+	font-family: Arial, Helvetica, sans-serif;
+}
+/* ------------------ */
