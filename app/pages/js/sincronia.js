@@ -337,7 +337,7 @@ const cron = () => {
 	var milliseconds = parseInt((dif % 1000) / 100),
 	seconds = Math.floor((dif / 1000) % 60),
 	minutes = Math.floor((dif / (1000 * 60)) % 60),
-	hours = Math.floor((dif / (1000 * 60 * 60)) % 24);
+	hours = Math.floor((dif / (1000 * 60 * 60)) % 999);
 
 	hours = (hours < 10) ? "0" + hours : hours;
 	minutes = (minutes < 10) ? "0" + minutes : minutes;
