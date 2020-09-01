@@ -1,38 +1,51 @@
 <html>
 
-<head lang="pt-br">
-	<title>Dashboard</title>
-
-	<meta charset="utf-8">
-
-	<!-- Responsivo -->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" type="text/css" href="pages/css/bootstrap.css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="pages/css/style.css" media="screen" />
-
-	<!-- JS -->
-	<script src="pages/js/jquery-3.5.1.min.js"></script>
-	<script src="pages/js/equipamento.repository.js"></script>
-	<script src="pages/js/equipamento.model.js"></script>
-	<script src="pages/js/sincronia.js"></script>
-
-</head>
+	<head lang="pt-br">
+		<title>Dashboard</title>
+	
+		<meta charset="utf-8">
+	
+		<!-- Responsivo -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="cache-control" content="no-cache" />
+		
+	
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" type="text/css" href="../pages/css/bootstrap/bootstrap-grid.min.css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="../pages/css/bootstrap/bootstrap-reboot.min.css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="../pages/css/bootstrap/bootstrap.min.css" media="screen" />
+	
+		<link rel="stylesheet" type="text/css" href="../pages/css/style/telao.css" media="screen" />
+	
+		
+		<!-- <link rel="stylesheet" type="text/css" href="pages/css/style.css" media="screen" /> -->
+	
+		<link rel="icon" type="image/svg" href="assets/img/logo/vieli.svg" />
+	
+		<!-- JS -->
+		<script src="../pages/js/lib/jquery-3.5.1.min.js"></script>
+		<script src="../pages/js/lib/bootstrap.bundle.min.js"></script>
+		<script src="../pages/js/lib/bootstrap.min.js"></script>
+	
+		<script src="../config.js"></script>
+		<script src="../pages/js/equipamento.repository.js"></script>
+		<script src="../pages/js/model/equipamento.model.js"></script>
+		<script src="../pages/js/view/telao.js"></script>
+	</head>
 
 <body>
 
-<div style="color: black;" class="container">
+<div class="container-fluid text-vieli">
 	<header>
 		<div class="row">
-			<div class="col-lg-12 col-md-12 col-sm-12 borda">
-				<div style='background-color: orange;' class="card margem font-vieli">
-					<div class="card-body">
-						<div class="float-sm-left font-title font-weight-bolder text-sm-center" id="equipamento" >
-							Nome Equipamento
+			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+				<div class="card background-parada font-title-telao">
+					<div class="card-body pt-md-0 pb-md-0">
+						<div class="col-lg-7 col-md-12 col-sm-12 float-left font-weight-bolder text-lg-left text-md-center text-sm-center font-title-telao" id="equipamento">
+							NOME EQUIPAMENTO
 						</div>
-						<div class="float-sm-right font-title font-weight-bolder text-sm-center" id="horaatual">
-							Hora Atual
+						<div class="col-lg-5 col-md-12 col-sm-12 float-right font-title font-weight-bolder text-lg-right text-md-center text-sm-center font-time-telao" id="horaatual">
+							00/00/0000 - 00:00:00
 						</div>
 					</div>
 				</div>
@@ -42,58 +55,43 @@
 
 	<section>
 		<div class="row">
-			<div class="col-lg-6 col-md-6 col-sm-6 borda">
-				<div style='background-color: orange;' class="card margem font-vieli">
-					<div class="card-body borda alinha-text justify-content-center">
-						<div class="font-status"><b>PARADA DESDE: </b></div> 
-						<div class="font-status" id="inicioparada">
-							Parada Desde
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-6 col-md-6 col-sm-6 borda">
-				<div style='background-color: orange;' class="card margem font-vieli">
-					<div class="card-body borda alinha-text justify-content-center font-status font-weight-bolder" id="motivoparada">
-						Motivo Parada
+			<div class="col-lg-12 col-md-12 col-sm-12 mt-1">
+				<div class="card background-parada">
+					<div class="card-body text-center">
+						<span class="font-parada-producao font-weight-bolder">PARADA DESDE: </span>
+						<span class="font-parada-date font-weight-bolder" id="inicioparada">00/00/0000 00:00:00</span>
 					</div>
 				</div>
 			</div>
 		</div>
 
 		<div class="row">
-			<div class="col-lg-12 col-md-12 col-sm-12 borda">
-				<div style='background-color: orange;' class="card margem font-vieli">
-					<div class="card-body borda alinha-text justify-content-center">
-						<div id="TempoParado" class="font-weight-bolder cronometro"> 00:00:00 </div>
+			<div class="col-lg-12 col-md-12 col-sm-12 mt-1">
+				<div class="card background-parada text-center">
+					<div class="card-body pt-0 pb-0">
+						<span id="TempoParado" class="font-weight-bolder font-cronometro"> 00:00:00 </span>
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<div class="row">
-			<div class="col-lg-4 col-md-4 col-sm-4 borda">
-				<div style='background-color: orange;' class="card margem font-vieli">
-					<div class="card-header text-sm-center font-weight-bolder sub-title">PRODUZIDO</div>
-					<div class="card-body text-sm-center font-meta font-weight-bolder" id="producao">
-						Produzido
-					</div>
+		<div class="row font-weight-bolder">
+			<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mt-1 pr-md-0">
+				<div class="card background-parada text-center">
+					<div class="card-header font-header-card">PRODUZIDO</div>
+					<div class="card-body font-indicadores pt-0 pb-0 pt-lg-2 pb-lg-2" id="producao">00000,0</div>
 				</div>
 			</div>
-			<div class="col-lg-4 col-md-4 col-sm-4 borda">
-				<div style='background-color: orange;' class="card margem color-text font-vieli">
-					<div class="card-header text-sm-center font-weight-bolder sub-title">% META</div>
-					<div class="card-body text-sm-center font-meta font-weight-bolder	" id="pctmeta">
-						% Meta
-					</div>
+			<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mt-1 pr-md-1 pl-md-1">
+				<div class="card background-parada text-center">
+					<div class="card-header font-header-card">% META</div>
+					<div class="card-body font-indicadores pt-0 pb-0 pt-lg-2 pb-lg-2" id="pctmeta">000,0 %</div>
 				</div>
 			</div>
-			<div class="col-lg-4 col-md-4 col-sm-4 borda">
-				<div style='background-color: orange;' class="card margem color-text font-vieli">
-					<div class="card-header text-sm-center font-weight-bolder sub-title">RETRABALHO</div>
-					<div class="card-body text-sm-center font-meta font-weight-bolder" id="retrabalho">
-						10 %
-					</div>
+			<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mt-1 pl-md-0">
+				<div class="card background-parada text-center">
+					<div class="card-header font-header-card">RETRABALHO</div>
+					<div class="card-body font-indicadores pt-0 pb-0 pt-lg-2 pb-lg-2" id="pctretrabalho">000,0 %</div>
 				</div>
 			</div>
 		</div>
@@ -101,35 +99,34 @@
 
 
 	<footer>
-		<div class="row">
-			<div class="col-lg-3 col-md-3 col-sm-3 borda">
-				<div style='background-color: orange;' class="card margem color-text font-vieli">
-					<div class="card-header text-sm-center font-weight-bolder sub-title">Disponibilidade</div>
-					<div class="card-body text-sm-center font-indicadores font-weight-bolder" id="disponibilidade">Disponibilidade</div>
+		<div class="row font-weight-bolder">
+			<div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 mt-1 pr-md-1 pr-lg-1">
+				<div class="card text-center background-parada alertaDisponibilidade">
+					<div class="card-header font-header-card">Disponibilidade</div>
+					<div class="card-body font-indicadores pt-0 pb-0 pt-lg-2 pb-lg-2" id="disponibilidade">000,0 %</div>
 				</div>
 			</div>
-			<div class="col-lg-3 col-md-3 col-sm-3 borda">
-				<div style='background-color: orange;' class="card margem color-text font-vieli">
-					<div class="card-header text-sm-center font-weight-bolder sub-title">Performance</div>
-					<div class="card-body text-sm-center font-indicadores font-weight-bolder" id="performance">Performance %</div>
+			<div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 mt-1 pl-md-1 pl-lg-0 pr-lg-1">
+				<div class="card text-center background-parada alertaPerformance">
+					<div class="card-header font-header-card">Performance</div>
+					<div class="card-body font-indicadores pt-0 pb-0 pt-lg-2 pb-lg-2" id="performance">000,0 %</div>
 				</div>
 			</div>
-			<div class="col-lg-3 col-md-3 col-sm-3 borda">
-				<div style='background-color: orange;' class="card margem color-text font-vieli">
-					<div class="card-header text-sm-center font-weight-bolder sub-title">Qualidade</div>
-					<div class="card-body text-sm-center font-indicadores font-weight-bolder" id="qualidade">Qualidade %</div>
+			<div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 mt-1 pr-md-1 pl-lg-0 pr-lg-1">
+				<div class="card text-center background-parada alertaQualidade">
+					<div class="card-header font-header-card">Qualidade</div>
+					<div class="card-body font-indicadores pt-0 pb-0 pt-lg-2 pb-lg-2" id="qualidade">000,0 %</div>
 				</div>
 			</div>
-			<div class="col-lg-3 col-md-3 col-sm-3 borda">
-				<div style='background-color: orange;' class="card margem color-text font-vieli">
-					<div class="card-header text-sm-center font-weight-bolder sub-title">OEE</div>
-					<div class="card-body text-sm-center font-indicadores font-weight-bolder" id="oee">OEE %</div>
+			<div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 mt-1 pl-md-1 pl-lg-0">
+				<div class="card text-center background-parada alertaOee alertaPctOee">
+					<div class="card-header font-header-card">OEE</div>
+					<div class="card-body font-indicadores pt-0 pb-0 pt-lg-2 pb-lg-2" id="oee">000,0 %</div>
 				</div>
 			</div>
 		</div>
 		<div class="float-sm-right">
-			<img class="logo" src="assets/img/logo/vieli.svg" alt="Logo" title="Vieli Tech">
-		</div>
+			<img class="logo mt-1" src="../assets/img/logo/vieli.svg" alt="Logo" title="Vieli Tech">
 		</div>
 	</footer>
 </div>

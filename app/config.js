@@ -16,9 +16,9 @@ const Config = {
 	  */
 	pctmeta: true,// Selecione TRUE para ativar FALSE para desativar
 	alertameta: { // Valores para alertas
-		vermelho: 45.0, // Valores abaixo de
-		amarelo: 65.0, // Valores acima do anterior e abaixo de
-		verde: 100.0, // Valores abaixo de
+		vermelho: 2500.0, // Valores abaixo de
+		amarelo: 2900.0, // Valores acima do anterior e abaixo de
+		verde: 3000.0, // Valores abaixo de
 	},
 
 	pctoee: true,// Marque como false caso trabalhado com Meta OEE
@@ -34,8 +34,8 @@ const Config = {
 	pctdisponibilidade: true,
 	disponibilidade: {
 		vermelho: 50.0, // Valores abaixo de
-		amarelo: 60.0, // Valores acima do anterior e abaixo de
-		verde: 80.0, // Valores acima de
+		amarelo: 81.0, // Valores acima do anterior e abaixo de
+		verde: 90.0, // Valores acima de
 	},
 	//Selecione True para ativar alerta na Performance
 	pctperformance: true,
