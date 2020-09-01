@@ -58,7 +58,7 @@ const alimentaDoc = (equipamento) => {
 				<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mt-1 pl-md-0">
 					<div class="card background-parada text-center alertaRetrabalho">
 						<div class="card-header font-header-card">RETRABALHO</div>
-						<div class="card-body font-indicadores pt-0 pb-0 pt-lg-2 pb-lg-2" id="pctretrabalho">000,0 %</div>
+						<div class="card-body font-indicadores pt-0 pb-0 pt-lg-2 pb-lg-2" id="retrabalho">000,0 %</div>
 					</div>
 				</div>
 			</div>
@@ -132,7 +132,7 @@ const alimentaDoc = (equipamento) => {
 				<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mt-1 pl-md-0">
 					<div class="card default text-center alertaRetrabalho">
 						<div class="card-header font-header-card">RETRABALHO</div>
-						<div class="card-body font-indicadores pt-0 pb-0 pt-lg-2 pb-lg-2" id="pctretrabalho">000,0 %</div>
+						<div class="card-body font-indicadores pt-0 pb-0 pt-lg-2 pb-lg-2" id="retrabalho">000,0 %</div>
 					</div>
 				</div>
 			</div>

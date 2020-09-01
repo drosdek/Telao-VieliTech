@@ -35,7 +35,7 @@ Equipamento.findById = (equipamentoId, result) => {
 		return;
 	  }
   
-	  // not found Customer with the id
+	  // not found Equipamento with the id
 	  result({ kind: "not_found" }, null);
 	});
   };
