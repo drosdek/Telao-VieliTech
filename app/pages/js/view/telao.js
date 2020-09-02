@@ -308,6 +308,11 @@ const eqp = {
 	grupo: null,
 };
 
+const refresh = () => {
+	tempRefresh = eqp.size * Config.tempodetransicao
+	setTimeout(function(){window.location.reload(1)}, tempRefresh)
+}
+
 const cron = () => {
 	const dif = new Date(new Date().getTime() - eqp.dP.getTime());
 	var milliseconds = parseInt((dif % 1000) / 100),
