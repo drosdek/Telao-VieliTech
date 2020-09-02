@@ -19,7 +19,6 @@ const alimentaRel = (relatorio) => {
 
 		if (Config.pctoee == true) {
 			mtOee = Math.abs((relatorio[t].disponibilidade * relatorio[t].performance * relatorio[t].qualidade)/10000).toFixed(1)
-			console.log(mtOee)
 			if (mtOee < Config.alertaoee.vermelho) {
 				alOee = 'vermelho'
 			} else if (mtOee < Config.alertaoee.amarelo) {
@@ -30,11 +29,11 @@ const alimentaRel = (relatorio) => {
 		}
 
 		if (relatorio[t].inicioparada != null) {
-			status = 'Em operação'
-			bgStatus = 'verde'
-		} else {
 			status = 'Parada'
 			bgStatus = 'orange'
+		} else {
+			status = 'Em operação'
+			bgStatus = ''
 		}
 
 		if (relatorio[t].TempoParado != null) {
@@ -44,8 +43,8 @@ const alimentaRel = (relatorio) => {
 		}
 		$('#lista-relatorio').append(`
 		<tr>
-		<td class="align-middle">${relatorio[t].equipamento}</td>
-		<td class="text-sm-center align-middle ">${Math.abs(relatorio[t].producao).toFixed(1)}</td>
+		<td class="align-middle font-weight-bolder">${relatorio[t].equipamento}</td>
+		<td class="text-sm-center align-middle font-weight-bolder">${Math.abs(relatorio[t].producao).toFixed(1)} ${relatorio[t].unidade}</td>
 		<td class="text-sm-center align-middle font-weight-bolder ${alMeta}">${Math.abs(relatorio[t].pctmeta).toFixed(1) + " %"}</td>
 		<td class="text-sm-center align-middle font-weight-bolder ${alOee}">${mtOee} %</td>
 		<td class="align-middle font-weight-bolder text-center ${bgStatus}">${status}</td>
