@@ -65,4 +65,8 @@ const reqEvenTel = async() => {
 		$('#erro').modal('show');
 	});
 	setTimeout(reqEvenTel, Config.tempodetransicao);
+
+	if(eqp.size != 0){
+		refresh()
+	}
 }
