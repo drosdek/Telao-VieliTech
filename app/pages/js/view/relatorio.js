@@ -18,9 +18,11 @@ const alimentaRel = (relatorio) => {
 		} 
 
 		if (Config.pctoee == true) {
-			if (relatorio[t].metaoee < Config.alertaoee.vermelho) {
+			mtOee = Math.abs((relatorio[t].disponibilidade * relatorio[t].performance * relatorio[t].qualidade)/10000).toFixed(1)
+			console.log(mtOee)
+			if (mtOee < Config.alertaoee.vermelho) {
 				alOee = 'vermelho'
-			} else if (relatorio[t].metaoee < Config.alertaoee.amarelo) {
+			} else if (mtOee < Config.alertaoee.amarelo) {
 				alOee = 'amarelo'
 			} else {
 				alOee = 'verde'
@@ -28,11 +30,11 @@ const alimentaRel = (relatorio) => {
 		}
 
 		if (relatorio[t].inicioparada != null) {
-			iconWarning = `${relatorio[t].descricao}<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-exclamation-triangle-fill float-right" fill="orange" xmlns="http://www.w3.org/2000/svg">
-			<path fill-rule="evenodd" d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 5zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
-		  </svg>`
+			status = 'Em operação'
+			bgStatus = 'verde'
 		} else {
-			iconWarning = '-'
+			status = 'Parada'
+			bgStatus = 'orange'
 		}
 
 		if (relatorio[t].TempoParado != null) {
@@ -45,8 +47,8 @@ const alimentaRel = (relatorio) => {
 		<td class="align-middle">${relatorio[t].equipamento}</td>
 		<td class="text-sm-center align-middle ">${Math.abs(relatorio[t].producao).toFixed(1)}</td>
 		<td class="text-sm-center align-middle font-weight-bolder ${alMeta}">${Math.abs(relatorio[t].pctmeta).toFixed(1) + " %"}</td>
-		<td class="text-sm-center align-middle font-weight-bolder ${alOee}">${Math.abs((relatorio[t].disponibilidade * relatorio[t].performance * relatorio[t].qualidade)/10000).toFixed(1) + " %"}</td>
-		<td class="align-middle">${iconWarning}</td>
+		<td class="text-sm-center align-middle font-weight-bolder ${alOee}">${mtOee} %</td>
+		<td class="align-middle font-weight-bolder text-center ${bgStatus}">${status}</td>
 		${timeStop}
 		<td class="text-sm-center align-middle"><button class="btn btn-primary teste" onClick="window.location.href = '../index.html?idMaquina=${relatorio[t].id_equipamento}'">
 			<svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-eye" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
