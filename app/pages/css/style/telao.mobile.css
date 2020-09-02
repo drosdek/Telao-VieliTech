@@ -190,13 +190,13 @@
 	}
 	
 	.font-title-telao {
-		font-size: 2.5rem;
+		font-size: 2rem;
 	}
 
 	.font-time-telao {
 		font-size: 1.5rem;
 		position: relative;
-		top: 0.8rem;
+		top: 0.5rem;
 	}
 	
 	.font-indicador-producao {
@@ -240,7 +240,7 @@
 	}
 	
 	.font-cronometro {
-		font-size: 15rem;
+		font-size: 12rem;
 	}
 
 	.text-vieli {
