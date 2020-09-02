@@ -69,10 +69,10 @@ const alimentaDoc = (equipamento) => {
 				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
 					<div class="card default font-title-telao alertaMeta">
 						<div class="card-body pt-md-0 pb-md-0">
-							<div class="col-lg-7 col-md-12 col-sm-12 float-left font-weight-bolder text-lg-left text-md-center text-sm-center font-title-telao" id="equipamento">
+							<div class="col-lg-7 col-md-7 col-sm-12 float-left font-weight-bolder text-lg-left text-md-left text-sm-center font-title-telao" id="equipamento">
 								NOME EQUIPAMENTO
 							</div>
-							<div class="col-lg-5 col-md-12 col-sm-12 float-right font-title font-weight-bolder text-lg-right text-md-center text-sm-center font-time-telao" id="horaatual">
+							<div class="col-lg-5 col-md-5 col-sm-12 float-right font-title font-weight-bolder text-lg-right text-md-right text-sm-center font-time-telao" id="horaatual">
 								00/00/0000 - 00:00:00
 							</div>
 						</div>
@@ -82,7 +82,7 @@ const alimentaDoc = (equipamento) => {
 			`);
 			$('#linha-producao').html(`
 			<div class="row">
-				<div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 mt-1 pr-lg-0">
+				<div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 mt-1 pr-lg-0 pr-md-1">
 					<div class="card default alertaMeta">
 						<div class="card-body pt-0 pb-0">
 							<span class="font-indicador-producao font-weight-bolder" id="producao">00000,0</span>
@@ -91,7 +91,7 @@ const alimentaDoc = (equipamento) => {
 					</div>
 				</div>
 
-				<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 mt-1 pl-lg-1">
+				<div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 mt-1 pl-lg-1 pl-md-0">
 					<div class="card default h-100 alertaMeta">
 						<div class="card-header font-header-card justify-content-center">
 							<div class="row justify-content-center">
