@@ -315,8 +315,7 @@ const refresh = () => {
 
 const cron = () => {
 	const dif = new Date(new Date().getTime() - eqp.dP.getTime());
-	var milliseconds = parseInt((dif % 1000) / 100),
-	seconds = Math.floor((dif / 1000) % 60),
+	var	seconds = Math.floor((dif / 1000) % 60),
 	minutes = Math.floor((dif / (1000 * 60)) % 60),
 	hours = Math.floor((dif / (1000 * 60 * 60)) % 999);
 
