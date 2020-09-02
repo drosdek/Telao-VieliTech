@@ -8,10 +8,10 @@ const alimentaDoc = (equipamento) => {
 				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
 					<div class="card background-parada font-title-telao">
 						<div class="card-body pt-md-0 pb-md-0">
-							<div class="col-lg-7 col-md-12 col-sm-12 float-left font-weight-bolder text-lg-left text-md-center text-sm-center font-title-telao" id="equipamento">
+							<div class="col-lg-7 col-md-7 col-sm-12 float-left font-weight-bolder text-lg-left text-md-left text-sm-center font-title-telao" id="equipamento">
 								NOME EQUIPAMENTO
 							</div>
-							<div class="col-lg-5 col-md-12 col-sm-12 float-right font-title font-weight-bolder text-lg-right text-md-center text-sm-center font-time-telao" id="horaatual">
+							<div class="col-lg-5 col-md-5 col-sm-12 float-right font-title font-weight-bolder text-lg-right text-md-right text-sm-center font-time-telao" id="horaatual">
 								00/00/0000 - 00:00:00
 							</div>
 						</div>
@@ -24,7 +24,7 @@ const alimentaDoc = (equipamento) => {
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12 mt-1">
 					<div class="card background-parada">
-						<div class="card-body text-center">
+						<div class="card-body text-center pt-0 pb-0">
 							<span class="font-parada-producao font-weight-bolder">PARADA DESDE: </span>
 							<span class="font-parada-date font-weight-bolder" id="inicioparada">00/00/0000 00:00:00</span>
 						</div>
