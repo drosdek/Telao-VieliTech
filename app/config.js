@@ -16,9 +16,9 @@ const Config = {
 	  */
 	pctmeta: true,// Selecione TRUE para ativar FALSE para desativar
 	alertameta: { // Valores para alertas
-		vermelho: 2500.0, // Valores abaixo de
-		amarelo: 2900.0, // Valores acima do anterior e abaixo de
-		verde: 3000.0, // Valores abaixo de
+		vermelho: 35.0, // Valores abaixo de
+		amarelo: 80.0, // Valores acima do anterior e abaixo de
+		verde: 100.0, // Valores abaixo de
 	},
 
 	pctoee: true,// Marque como false caso trabalhado com Meta OEE
