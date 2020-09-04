@@ -197,17 +197,18 @@ const alimentaDoc = (equipamento) => {
 
 		// IF baseado no Retrabalho
 		if (Config.pctretrabalho == true) {
-			if (equipamento.retrabalho <= Config.retrabalho.verde) {
+			eqpRetrabalho = (equipamento.retrabalho/equipamento.producao)*100
+			if (eqpRetrabalho <= Config.retrabalho.verde) {
 				$(".alertaRetrabalho").css({
 					backgroundColor: "green",
 					color: "white"
 				});
-			} else if (equipamento.retrabalho >= Config.retrabalho.vermelho) {
+			} else if (eqpRetrabalho >= Config.retrabalho.vermelho) {
 				$(".alertaRetrabalho").css({
 					backgroundColor: "red",
 					color: "white"
 				});
-			} else if (equipamento.retrabalho >= Config.retrabalho.amarelo) {
+			} else if (eqpRetrabalho >= Config.retrabalho.amarelo) {
 				$(".alertaRetrabalho").css({
 					backgroundColor: "yellow",
 					color: "black"
@@ -309,8 +310,9 @@ const eqp = {
 };
 
 const refresh = () => {
-	tempRefresh = eqp.size * Config.tempodetransicao
-	setTimeout(function(){window.location.reload(1)}, tempRefresh)
+	tempRefresh = (eqp.size * Config.tempodetransicao) - Config.tempodetransicao
+	console.log(tempRefresh)
+	setTimeout(function(){window.location.reload(true)}, tempRefresh)
 }
 
 const cron = () => {
