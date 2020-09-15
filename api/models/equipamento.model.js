@@ -42,7 +42,7 @@ Equipamento.findById = (equipamentoId, result) => {
 
 
 Equipamento.getAll = (result) => {
-	sql.query(`SELECT oee_telao.id_equipamento, oee_telao.equipamento, oee_telao.unidade, oee_telao.producao, oee_telao.retrabalho, 
+	sql.query(`SELECT oee_telao.horaatual, oee_telao.id_equipamento, oee_telao.equipamento, oee_telao.unidade, oee_telao.producao, oee_telao.retrabalho, 
 	oee_telao.metaatual, oee_telao.disponibilidade, oee_telao.performance, oee_telao.qualidade, oee_telao.pctmeta, oee_telao.ritmodia,
 	oee_telao.ritmometa, oee_telao.TempoParado,oee_telao.metaoee, motparada.descricao, oee_telao.inicioparada, oee_telao.ritmominuto 
 	FROM oee_telao LEFT JOIN motparada ON motparada.idmotparada = oee_telao.id_motivoparada ORDER BY oee_telao.id_equipamento`, (err, res) => {
@@ -58,7 +58,7 @@ Equipamento.getAll = (result) => {
  };
 
  Equipamento.findByGroup = (groupId, result) => {
-	 sql.query(`SELECT oee_telao.id_equipamento, oee_telao.equipamento, oee_telao.unidade, oee_telao.producao, oee_telao.retrabalho, 
+	 sql.query(`SELECT oee_telao.horaatual, oee_telao.id_equipamento, oee_telao.equipamento, oee_telao.unidade, oee_telao.producao, oee_telao.retrabalho, 
 	 oee_telao.metaatual, oee_telao.disponibilidade, oee_telao.performance, oee_telao.qualidade, oee_telao.pctmeta, oee_telao.ritmodia,
 	 oee_telao.ritmometa, oee_telao.TempoParado,oee_telao.metaoee, motparada.descricao, oee_telao.inicioparada, oee_telao.ritmominuto, 
 	 oee_telao.grupotelao, oee_telao.ordemtelao FROM oee_telao LEFT JOIN motparada ON oee_telao.id_equipamento = motparada.idmotparada 
