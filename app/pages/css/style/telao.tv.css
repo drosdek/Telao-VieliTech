@@ -311,3 +311,61 @@
 		height: 2rem;
 	}
 }
+
+@media screen and (min-width: 1800px) and (min-height: 900px) {
+	.default {
+		background-color: gray;
+		color: white
+	}
+
+	.font-parada-producao {
+		font-size: 3rem;
+	}
+	
+	.font-parada-date {
+		font-size: 3rem;
+	}
+	
+	.font-cronometro {
+		font-size: 12rem;
+	}
+	
+	.text-vieli {
+		font-family: Arial, Helvetica, sans-serif;
+	}
+	
+	.font-title-telao {
+		font-size: 3.5rem;
+	}
+
+	.font-time-telao {
+		font-size: 2.5rem;
+		top: 0.5rem;
+	}
+	
+	.font-indicador-producao {
+		font-size: 14.5rem;
+	}
+	
+	.font-um-producao {
+		font-size: 5rem;
+	}
+	
+	.font-ritmo-producao {
+		font-size: 3rem;
+	}
+	
+	.font-indicadores {
+		font-size: 5.5rem;
+	}
+	
+	.font-header-card {
+		font-size: 2.1rem;
+		font-weight: 600;
+		line-height: 1.2;
+	}
+	
+	.logo {
+		height: 3rem;
+	}
+}
