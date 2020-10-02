@@ -66,10 +66,10 @@ const Config = {
 		vermelho: 100.0, // Valores acima de
 	},
 	//Selecione o tempo de transicao entre equipamentos, cada segundo = 1000
-	tempodetransicao: 5000,
+	tempodetransicao: 50000,
 	/**
 	 * Defina a URL para conexao com API
 	 */
-	conecta_url: "http://localhost:8081",
+	conecta_url: "http://localhost:3005",
 
 }
