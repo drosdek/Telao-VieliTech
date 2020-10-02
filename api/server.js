@@ -28,6 +28,6 @@ app.get("/", (req, res) => {
 require("./routes/equipameto.routes.js")(app);
 
 // set port, listen for requests
-app.listen(8081, () => {
-  console.log("Server is running on port 8081.");
+app.listen(3005, () => {
+  console.log("Server is running on port 3005.");
 });
