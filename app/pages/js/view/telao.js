@@ -2,6 +2,8 @@ const alimentaDoc = (equipamento) => {
 	if (equipamento) {
 		if (equipamento.inicioparada && equipamento.inicioparada !== 'null') {
 			eqp.dP = new Date(equipamento.inicioparada);
+			eqp.hA = new Date(equipamento.horaatual);
+			cron();
 
 			$('#lista-header').html(`
 			<div class="row">
@@ -307,6 +309,8 @@ const eqp = {
 	dP: new Date(),
 	id: null,
 	grupo: null,
+	hA: new Date(),
+	dif: new Date(),
 };
 
 const refresh = () => {
@@ -315,22 +319,32 @@ const refresh = () => {
 	setTimeout(function(){window.location.reload(true)}, tempRefresh)
 }
 
+
 const cron = () => {
-	const dif = new Date(new Date().getTime() - eqp.dP.getTime());
-	var	seconds = Math.floor((dif / 1000) % 60),
-	minutes = Math.floor((dif / (1000 * 60)) % 60),
-	hours = Math.floor((dif / (1000 * 60 * 60)) % 999);
+	console.log(eqp.hA);
+	console.log(eqp.dP);
+	eqp.dif = new Date(eqp.hA.getTime() - eqp.dP.getTime());
+	console.log('asdsadasd', new Date((eqp.hA.getTime() - eqp.dP.getTime())*123))
+	setTimeout(attCron, 1000);
+}
+
+const attCron = () => {
+	eqp.dif.setSeconds(eqp.dif.getSeconds() + 1);
+	var	seconds = Math.floor((eqp.dif / 1000) % 60),
+	minutes = Math.floor((eqp.dif / (1000 * 60)) % 60),
+	hours = Math.floor((eqp.dif / (1000 * 60 * 60)) % 999);
 
 	hours = (hours < 10) ? "0" + hours : hours;
 	minutes = (minutes < 10) ? "0" + minutes : minutes;
 	seconds = (seconds < 10) ? "0" + seconds : seconds;
 
 	$('#TempoParado').html(`${hours}:${minutes}:${seconds}`);
-	setTimeout(cron, 1000);
+	setTimeout(attCron, 1000);
 }
 
 const horaAtual = () => {
-	const horaatual = new Date();
+	eqp.hA.setSeconds(eqp.hA.getSeconds() + 1)
+	const horaatual = new Date(eqp.hA);
 	$('#horaatual').html(`${horaatual.toLocaleDateString('pt-br')} - ${horaatual.toLocaleTimeString('pt-br')}`);
 	setTimeout(horaAtual, 1000);
 }
@@ -351,6 +365,5 @@ const leUrl = () => {
 $(document).ready(() => {
 	leUrl();
 	reqEvenTel();
-	cron();
 	horaAtual();
 });

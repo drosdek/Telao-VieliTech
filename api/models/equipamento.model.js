@@ -23,7 +23,10 @@ const Equipamento = function (equipamento) {
 
 Equipamento.findById = (equipamentoId, result) => {
   sql.query(
-    `SELECT * FROM oee_telao WHERE id_equipamento = ${equipamentoId}`,
+    `SELECT oee_telao.horaatual, oee_telao.id_equipamento, oee_telao.equipamento, oee_telao.unidade, oee_telao.producao, oee_telao.retrabalho, 
+    oee_telao.metaatual, oee_telao.disponibilidade, oee_telao.performance, oee_telao.qualidade, oee_telao.pctmeta, oee_telao.ritmodia,
+    oee_telao.ritmometa, oee_telao.TempoParado as tp,oee_telao.metaoee, motparada.descricao, oee_telao.inicioparada, oee_telao.ritmominuto, 
+    cast(oee_telao.TempoParado as datetime) as TempoParado FROM oee_telao LEFT JOIN motparada ON motparada.idmotparada = oee_telao.id_motivoparada WHERE oee_telao.id_equipamento = ${equipamentoId}`,
     (err, res) => {
       if (err) {
         console.log("error: ", err);
@@ -48,7 +51,7 @@ Equipamento.getAll = (result) => {
     `SELECT oee_telao.horaatual, oee_telao.id_equipamento, oee_telao.equipamento, oee_telao.unidade, oee_telao.producao, oee_telao.retrabalho, 
 	oee_telao.metaatual, oee_telao.disponibilidade, oee_telao.performance, oee_telao.qualidade, oee_telao.pctmeta, oee_telao.ritmodia,
 	oee_telao.ritmometa, oee_telao.TempoParado as tp,oee_telao.metaoee, motparada.descricao, oee_telao.inicioparada, oee_telao.ritmominuto, 
-  cast(oee_telao.TempoParado as date) as TempoParado
+  cast(oee_telao.TempoParado as datetime) as TempoParado
   FROM oee_telao LEFT JOIN motparada ON motparada.idmotparada = oee_telao.id_motivoparada ORDER BY oee_telao.id_equipamento`,
     (err, res) => {
       if (err) {
