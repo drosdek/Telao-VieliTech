@@ -36,8 +36,8 @@ const alimentaRel = (relatorio) => {
 			bgStatus = ''
 		}
 
-		if (relatorio[t].TempoParado != null) {
-			timeStop = `<td style="background-color: orange;" class="text-sm-center align-middle font-weight-bolder">${relatorio[t].TempoParado}</td>`
+		if (relatorio[t].tp != null) {
+			timeStop = `<td style="background-color: orange;" class="text-sm-center align-middle font-weight-bolder">${relatorio[t].tp}</td>`
 		} else {
 			timeStop = `<td class="text-sm-center align-middle">-</td>`
 		}
