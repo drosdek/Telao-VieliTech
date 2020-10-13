@@ -315,28 +315,30 @@ const eqp = {
 
 const refresh = () => {
 	tempRefresh = (eqp.size * Config.tempodetransicao) - Config.tempodetransicao
-	console.log(tempRefresh)
 	setTimeout(function(){window.location.reload(true)}, tempRefresh)
 }
 
 
 const cron = () => {
-	console.log(eqp.hA);
-	console.log(eqp.dP);
 	eqp.dif = new Date(eqp.hA.getTime() - eqp.dP.getTime());
-	console.log('asdsadasd', new Date((eqp.hA.getTime() - eqp.dP.getTime())*123))
+	if ( eqp.dif < 0 ) {
+		eqp.dif = new Date(eqp.dP.getTime() - eqp.hA.getTime());
+	}
 	setTimeout(attCron, 1000);
 }
 
 const attCron = () => {
 	eqp.dif.setSeconds(eqp.dif.getSeconds() + 1);
-	var	seconds = Math.floor((eqp.dif / 1000) % 60),
-	minutes = Math.floor((eqp.dif / (1000 * 60)) % 60),
-	hours = Math.floor((eqp.dif / (1000 * 60 * 60)) % 999);
+	var	seconds = Math.abs(Math.floor((eqp.dif / 1000) % 60)),
+	minutes = Math.abs(Math.floor((eqp.dif / (1000 * 60)) % 60)),
+	hours = Math.abs(Math.floor((eqp.dif / (1000 * 60 * 60)) % 999));
+
+
 
 	hours = (hours < 10) ? "0" + hours : hours;
 	minutes = (minutes < 10) ? "0" + minutes : minutes;
 	seconds = (seconds < 10) ? "0" + seconds : seconds;
+	console.log('Hora: ',hours, 'Minuto',minutes, 'Segundos',seconds)
 
 	$('#TempoParado').html(`${hours}:${minutes}:${seconds}`);
 	setTimeout(attCron, 1000);
