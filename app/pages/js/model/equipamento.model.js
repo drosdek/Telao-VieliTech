@@ -18,4 +18,9 @@ const Equipamento = function (equipamento) {
 	this.inicioparada = equipamento.inicioparada;
 	this.oee = equipamento.metaoee;
 	this.motivoparada = equipamento.descricao;
+	this.hoje = equipamento.hoje;
+	this.amanha = equipamento.amanha;
+	this.hh = equipamento.hh;
+	this.mm = equipamento.mm;
+	this.sec = equipamento.sec;
 }
