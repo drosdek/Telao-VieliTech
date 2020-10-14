@@ -19,6 +19,9 @@ const Equipamento = function (equipamento) {
   this.inicioparada = equipamento.inicioparada;
   this.metaoee = equipamento.metaoee;
   this.motivoparada = equipamento.descricao;
+  this.hh = equipamento.hh;
+  this.mm = equipamento.mm;
+  this.sec = equipamento.sec;
 };
 
 Equipamento.findById = (equipamentoId, result) => {
@@ -26,7 +29,9 @@ Equipamento.findById = (equipamentoId, result) => {
     `SELECT oee_telao.horaatual, oee_telao.id_equipamento, oee_telao.equipamento, oee_telao.unidade, oee_telao.producao, oee_telao.retrabalho, 
     oee_telao.metaatual, oee_telao.disponibilidade, oee_telao.performance, oee_telao.qualidade, oee_telao.pctmeta, oee_telao.ritmodia,
     oee_telao.ritmometa, oee_telao.TempoParado as tp,oee_telao.metaoee, motparada.descricao, oee_telao.inicioparada, oee_telao.ritmominuto, 
-    cast(oee_telao.TempoParado as datetime) as TempoParado FROM oee_telao LEFT JOIN motparada ON motparada.idmotparada = oee_telao.id_motivoparada WHERE oee_telao.id_equipamento = ${equipamentoId}`,
+    cast(oee_telao.TempoParado as datetime) as TempoParado, cast(now() as char) as hoje, cast(date_add(now(), interval 1 day) as char) as amanha,
+    hour(timediff(horaatual, inicioparada)) as hh, minute(timediff(horaatual, inicioparada)) as mm, second(timediff(horaatual, inicioparada)) as sec
+    FROM oee_telao LEFT JOIN motparada ON motparada.idmotparada = oee_telao.id_motivoparada WHERE oee_telao.id_equipamento = ${equipamentoId}`,
     (err, res) => {
       if (err) {
         console.log("error: ", err);
@@ -51,7 +56,8 @@ Equipamento.getAll = (result) => {
     `SELECT oee_telao.horaatual, oee_telao.id_equipamento, oee_telao.equipamento, oee_telao.unidade, oee_telao.producao, oee_telao.retrabalho, 
 	oee_telao.metaatual, oee_telao.disponibilidade, oee_telao.performance, oee_telao.qualidade, oee_telao.pctmeta, oee_telao.ritmodia,
 	oee_telao.ritmometa, oee_telao.TempoParado as tp,oee_telao.metaoee, motparada.descricao, oee_telao.inicioparada, oee_telao.ritmominuto, 
-  cast(oee_telao.TempoParado as datetime) as TempoParado
+  cast(oee_telao.TempoParado as datetime) as TempoParado, cast(now() as char) as hoje1, cast(date_add(now(), interval 1 day) as char) as amanha1,
+  hour(timediff(horaatual, inicioparada)) as hh, minute(timediff(horaatual, inicioparada)) as mm, second(timediff(horaatual, inicioparada)) as sec
   FROM oee_telao LEFT JOIN motparada ON motparada.idmotparada = oee_telao.id_motivoparada ORDER BY oee_telao.id_equipamento`,
     (err, res) => {
       if (err) {
