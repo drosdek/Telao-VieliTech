@@ -3,6 +3,9 @@ const alimentaDoc = (equipamento) => {
 		if (equipamento.inicioparada && equipamento.inicioparada !== 'null') {
 			eqp.dP = new Date(equipamento.inicioparada);
 			eqp.hA = new Date(equipamento.horaatual);
+			eqp.hh = equipamento.hh;
+			eqp.mm = equipamento.mm;
+			eqp.sec = equipamento.sec;
 			cron();
 
 			$('#lista-header').html(`
@@ -66,6 +69,7 @@ const alimentaDoc = (equipamento) => {
 			</div>
 			`);
 		} else {
+			eqp.hA = new Date(equipamento.horaatual);
 			$('#lista-header').html(`
 			<div class="row">
 				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
@@ -301,8 +305,6 @@ const alimentaDoc = (equipamento) => {
 	}
 }
 
-
-
 const eqp = {
 	size: 0,
 	index: 0,
@@ -311,6 +313,9 @@ const eqp = {
 	grupo: null,
 	hA: new Date(),
 	dif: new Date(),
+	hh: 0,
+	mm: 0,
+	sec: 0,
 };
 
 const refresh = () => {
@@ -319,33 +324,69 @@ const refresh = () => {
 }
 
 
+// const cron = () => {
+// 	const dif = new Date(eqp.hA.getTime() - eqp.dP.getTime());
+// 	if ( dif < 0 ) {
+// 		eqp.dif = new Date(eqp.dP.getTime() - eqp.hA.getTime());
+// 	} else {
+// 		eqp.dif = new Date(eqp.hA.getTime() - eqp.dP.getTime())
+// 	}
+// 	setTimeout(attCron, 1000);
+// }
+
 const cron = () => {
-	eqp.dif = new Date(eqp.hA.getTime() - eqp.dP.getTime());
-	if ( eqp.dif < 0 ) {
-		eqp.dif = new Date(eqp.dP.getTime() - eqp.hA.getTime());
-	}
-	setTimeout(attCron, 1000);
+  var segundo = eqp.sec;
+  var minuto = eqp.mm;
+  var hora = eqp.hh;
+
+  if (segundo < 59){
+    segundo++
+    if(segundo < 10){segundo = "0"+segundo}
+  }else 
+    if(segundo == 59 && minuto < 59){
+      segundo = 0+"0";
+      minuto++;
+      if(minuto < 10){minuto = "0"+minuto}
+    }
+  if(minuto == 59 && segundo == 59 && hora < 23){
+    segundo = 0+"0";
+    minuto = 0+"0";
+    hora++;
+    if(hora < 10){hora = "0"+hora}
+    }else 
+      if(minuto == 59 && segundo == 59 && hora == 23){
+        segundo = 0+"0";
+        minuto = 0+"0";
+        hora = 0+"0";
+      }
+
+   eqp.sec = segundo;
+   eqp.mm = minuto;
+   eqp.hh = hora;
+
+	$('#TempoParado').html(`${hora}:${minuto}:${segundo}`);
+	setTimeout(cron, 1000);
 }
 
-const attCron = () => {
-	eqp.dif.setSeconds(eqp.dif.getSeconds() + 1);
-	var	seconds = Math.abs(Math.floor((eqp.dif / 1000) % 60)),
-	minutes = Math.abs(Math.floor((eqp.dif / (1000 * 60)) % 60)),
-	hours = Math.abs(Math.floor((eqp.dif / (1000 * 60 * 60)) % 999));
+// const attCron = () => {
+// 	eqp.dif.setSeconds(eqp.dif.getSeconds() + 1);
+// 	var	seconds = Math.abs(Math.floor((eqp.dif / 1000) % 60)),
+// 	minutes = Math.abs(Math.floor((eqp.dif / (1000 * 60)) % 60)),
+// 	hours = Math.abs(Math.floor((eqp.dif / (1000 * 60 * 60)) % 999));
 
 
 
-	hours = (hours < 10) ? "0" + hours : hours;
-	minutes = (minutes < 10) ? "0" + minutes : minutes;
-	seconds = (seconds < 10) ? "0" + seconds : seconds;
-	console.log('Hora: ',hours, 'Minuto',minutes, 'Segundos',seconds)
+// 	hours = (hours < 10) ? "0" + hours : hours;
+// 	minutes = (minutes < 10) ? "0" + minutes : minutes;
+// 	seconds = (seconds < 10) ? "0" + seconds : seconds;
+// 	console.log('Hora: ',hours, 'Minuto',minutes, 'Segundos',seconds)
 
-	$('#TempoParado').html(`${hours}:${minutes}:${seconds}`);
-	setTimeout(attCron, 1000);
-}
+// 	$('#TempoParado').html(`${hours}:${minutes}:${seconds}`);
+// 	setTimeout(attCron, 1000);
+// }
 
 const horaAtual = () => {
-	eqp.hA.setSeconds(eqp.hA.getSeconds() + 1)
+	// eqp.hA.setSeconds(eqp.hA.getSeconds() + 1)
 	const horaatual = new Date(eqp.hA);
 	$('#horaatual').html(`${horaatual.toLocaleDateString('pt-br')} - ${horaatual.toLocaleTimeString('pt-br')}`);
 	setTimeout(horaAtual, 1000);
