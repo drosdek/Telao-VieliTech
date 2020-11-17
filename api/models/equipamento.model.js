@@ -1,8 +1,9 @@
 const sql = require("./db");
 
 const Equipamento = function (equipamento) {
+  this.id_equipamento = equipamento.id_equipamento;
   this.equipamento = equipamento.equipamento;
-  this.horaatual = equipamento.horaatual;
+  this.horaatual = Date(equipamento.horaatual).toLocaleString('pt-br');
   this.producao = equipamento.producao;
   this.ritmominuto = equipamento.ritmominuto;
   this.ritmodia = equipamento.ritmodia;
@@ -10,7 +11,7 @@ const Equipamento = function (equipamento) {
   this.metaatual = equipamento.metaatual;
   this.pctmeta = equipamento.pctmeta;
   this.pctretrabalho = equipamento.pctretrabalho;
-  this.disponibilidade = disponibilidade;
+  this.disponibilidade = equipamento.disponibilidade;
   this.performance = equipamento.performance;
   this.qualidade = equipamento.qualidade;
   this.unidade = equipamento.unidade;
@@ -22,6 +23,19 @@ const Equipamento = function (equipamento) {
   this.hh = equipamento.hh;
   this.mm = equipamento.mm;
   this.sec = equipamento.sec;
+  this.meta_pct_vrm = equipamento.meta_pct_vrm || 90;
+  this.meta_pct_amr = equipamento.meta_pct_amr || 100;
+  this.oee_pct_vrm = equipamento.oee_pct_vrm || 60;
+  this.oee_pct_amr = equipamento.oee_pct_amr || 70;
+  this.disp_pct_vrm = equipamento.disp_pct_vrm || 75;
+  this.disp_pct_amr = equipamento.disp_pct_amr || 83;
+  this.perf_pct_vrm = equipamento.perf_pct_vrm || 80;
+  this.perf_pct_amr = equipamento.perf_pct_amr || 88;
+  this.qual_pct_vrm = equipamento.qual_pct_vrm || 92;
+  this.qual_pct_amr = equipamento.qual_pct_amr || 96;
+  this.retr_pct_vrm = equipamento.retr_pct_vrm || 4;
+  this.retr_pct_amr = equipamento.retr_pct_amr || 2;
+  this.base_pct_campo = equipamento.base_pct_campo || 'meta';
 };
 
 Equipamento.findById = (equipamentoId, result) => {

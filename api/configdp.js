@@ -1,6 +1,6 @@
 module.exports = {
-  HOST: "localhost",
+  HOST: "192.168.0.4",
   USER: "root",
-  PASSWORD: "123@Drosdek",
-  DB: "aponta_temasa",
+  PASSWORD: "145823",
+  DB: "aponta_permobili",
 };

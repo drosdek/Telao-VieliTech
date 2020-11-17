@@ -5,6 +5,10 @@ const Equipamento = require("../models/equipamento.model");
 
 exports.findAll = (req, res) => {
 	Equipamento.getAll((err, data) => {
+		console.log(data);
+		data.forEach((item, index) => {
+			data[index] = new Equipamento(item);
+		});
 		if (err)
 			res.status(500).send({
 			message:
@@ -17,6 +21,7 @@ exports.findAll = (req, res) => {
 // Find a single Equipamento with a equipamentoId
 exports.findOne = (req, res) => {
 	Equipamento.findById(req.params.equipamentoId, (err, data) => {
+		data = new Equipamento(data);
 		if (err) {
 			if (err.kind === "not_found") {
 			res.status(404).send({
